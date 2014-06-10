@@ -21,6 +21,7 @@
 		A8189BBC1947C701004B311B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9E1947C701004B311B /* UIKit.framework */; };
 		A8189BC41947C701004B311B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8189BC21947C701004B311B /* InfoPlist.strings */; };
 		A8189BC61947C701004B311B /* RuntasticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BC51947C701004B311B /* RuntasticTests.m */; };
+		A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8189BCF1947C7DB004B311B /* main.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A8189BC11947C701004B311B /* RuntasticTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RuntasticTests-Info.plist"; sourceTree = "<group>"; };
 		A8189BC31947C701004B311B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A8189BC51947C701004B311B /* RuntasticTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuntasticTests.m; sourceTree = "<group>"; };
+		A8189BD01947C7DB004B311B /* main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = main.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		A8189BA01947C701004B311B /* Runtastic */ = {
 			isa = PBXGroup;
 			children = (
+				A8189BCF1947C7DB004B311B /* main.xcdatamodeld */,
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
 				A8189BAC1947C701004B311B /* Main.storyboard */,
@@ -252,6 +255,7 @@
 			files = (
 				A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */,
 				A8189BB11947C701004B311B /* RTViewController.m in Sources */,
+				A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */,
 				A8189BA71947C701004B311B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +471,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A8189BCF1947C7DB004B311B /* main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A8189BD01947C7DB004B311B /* main.xcdatamodel */,
+			);
+			currentVersion = A8189BD01947C7DB004B311B /* main.xcdatamodel */;
+			path = main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A8189B8F1947C701004B311B /* Project object */;
 }
