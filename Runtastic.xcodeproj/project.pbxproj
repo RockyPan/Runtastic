@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C22261319483D830029B859 /* RTBaseActivityTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22261219483D830029B859 /* RTBaseActivityTableCell.m */; };
 		A8189B9B1947C701004B311B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9A1947C701004B311B /* Foundation.framework */; };
 		A8189B9D1947C701004B311B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9C1947C701004B311B /* CoreGraphics.framework */; };
 		A8189B9F1947C701004B311B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9E1947C701004B311B /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C22261119483D830029B859 /* RTBaseActivityTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTBaseActivityTableCell.h; sourceTree = "<group>"; };
+		5C22261219483D830029B859 /* RTBaseActivityTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTBaseActivityTableCell.m; sourceTree = "<group>"; };
 		A8189B971947C701004B311B /* Runtastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runtastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8189B9A1947C701004B311B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8189B9C1947C701004B311B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
 				A8189BAC1947C701004B311B /* Main.storyboard */,
+				5C22261119483D830029B859 /* RTBaseActivityTableCell.h */,
+				5C22261219483D830029B859 /* RTBaseActivityTableCell.m */,
 				A8189BAF1947C701004B311B /* RTViewController.h */,
 				A8189BB01947C701004B311B /* RTViewController.m */,
 				A8189BB21947C701004B311B /* Images.xcassets */,
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C22261319483D830029B859 /* RTBaseActivityTableCell.m in Sources */,
 				A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */,
 				A8189BB11947C701004B311B /* RTViewController.m in Sources */,
 				A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */,
@@ -461,6 +467,7 @@
 				A8189BCB1947C701004B311B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8189BCC1947C701004B311B /* Build configuration list for PBXNativeTarget "RuntasticTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +476,7 @@
 				A8189BCE1947C701004B311B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -11,8 +11,8 @@
         <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="Type" syncable="YES"/>
     </entity>
     <entity name="Loop" syncable="YES">
-        <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="loopNo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Type" syncable="YES">
@@ -20,7 +20,7 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-324" positionY="-63" width="128" height="163"/>
+        <element name="Loop" positionX="-135" positionY="-36" width="128" height="90"/>
         <element name="Type" positionX="-63" positionY="102" width="128" height="60"/>
-        <element name="Loop" positionX="-135" positionY="-36" width="128" height="88"/>
     </elements>
 </model>
