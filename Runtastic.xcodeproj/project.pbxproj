@@ -18,7 +18,6 @@
 		A8189BA71947C701004B311B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BA61947C701004B311B /* main.m */; };
 		A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BAA1947C701004B311B /* RTAppDelegate.m */; };
 		A8189BAE1947C701004B311B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8189BAC1947C701004B311B /* Main.storyboard */; };
-		A8189BB11947C701004B311B /* RTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BB01947C701004B311B /* RTViewController.m */; };
 		A8189BB31947C701004B311B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8189BB21947C701004B311B /* Images.xcassets */; };
 		A8189BBA1947C701004B311B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189BB91947C701004B311B /* XCTest.framework */; };
 		A8189BBB1947C701004B311B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9A1947C701004B311B /* Foundation.framework */; };
@@ -26,6 +25,7 @@
 		A8189BC41947C701004B311B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8189BC21947C701004B311B /* InfoPlist.strings */; };
 		A8189BC61947C701004B311B /* RuntasticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BC51947C701004B311B /* RuntasticTests.m */; };
 		A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8189BCF1947C7DB004B311B /* main.xcdatamodeld */; };
+		A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BD31949D0F8004B311B /* RTMainTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,6 @@
 		A8189BA91947C701004B311B /* RTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTAppDelegate.h; sourceTree = "<group>"; };
 		A8189BAA1947C701004B311B /* RTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTAppDelegate.m; sourceTree = "<group>"; };
 		A8189BAD1947C701004B311B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A8189BAF1947C701004B311B /* RTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTViewController.h; sourceTree = "<group>"; };
-		A8189BB01947C701004B311B /* RTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RTViewController.m; sourceTree = "<group>"; };
 		A8189BB21947C701004B311B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A8189BB81947C701004B311B /* RuntasticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuntasticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8189BB91947C701004B311B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -67,6 +65,8 @@
 		A8189BC31947C701004B311B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A8189BC51947C701004B311B /* RuntasticTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuntasticTests.m; sourceTree = "<group>"; };
 		A8189BD01947C7DB004B311B /* main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = main.xcdatamodel; sourceTree = "<group>"; };
+		A8189BD21949D0F8004B311B /* RTMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMainTableViewController.h; sourceTree = "<group>"; };
+		A8189BD31949D0F8004B311B /* RTMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMainTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +126,8 @@
 		A8189BA01947C701004B311B /* Runtastic */ = {
 			isa = PBXGroup;
 			children = (
+				A8189BD21949D0F8004B311B /* RTMainTableViewController.h */,
+				A8189BD31949D0F8004B311B /* RTMainTableViewController.m */,
 				A8189BCF1947C7DB004B311B /* main.xcdatamodeld */,
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
@@ -138,8 +140,6 @@
 				5C222617194E87AB0029B859 /* RTActivitiesViewController.h */,
 				5C222618194E87AB0029B859 /* RTActivitiesViewController.m */,
 				5C22261219483D830029B859 /* RTBaseActivityTableCell.m */,
-				A8189BAF1947C701004B311B /* RTViewController.h */,
-				A8189BB01947C701004B311B /* RTViewController.m */,
 				A8189BB21947C701004B311B /* Images.xcassets */,
 				A8189BA11947C701004B311B /* Supporting Files */,
 			);
@@ -274,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C22261319483D830029B859 /* RTBaseActivityTableCell.m in Sources */,
+				A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */,
 				A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */,
 				A8189BB11947C701004B311B /* RTViewController.m in Sources */,
 				5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */,
