@@ -27,6 +27,7 @@
 		A8189BC61947C701004B311B /* RuntasticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BC51947C701004B311B /* RuntasticTests.m */; };
 		A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8189BCF1947C7DB004B311B /* main.xcdatamodeld */; };
 		A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BD31949D0F8004B311B /* RTMainTableViewController.m */; };
+		A8189BDC19507FAA004B311B /* to-do-list in Resources */ = {isa = PBXBuildFile; fileRef = A8189BDB19507FAA004B311B /* to-do-list */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		A8189BD01947C7DB004B311B /* main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = main.xcdatamodel; sourceTree = "<group>"; };
 		A8189BD21949D0F8004B311B /* RTMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMainTableViewController.h; sourceTree = "<group>"; };
 		A8189BD31949D0F8004B311B /* RTMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMainTableViewController.m; sourceTree = "<group>"; };
+		A8189BDB19507FAA004B311B /* to-do-list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "to-do-list"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		A8189BA11947C701004B311B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A8189BDB19507FAA004B311B /* to-do-list */,
 				A8189BA21947C701004B311B /* Runtastic-Info.plist */,
 				A8189BA31947C701004B311B /* InfoPlist.strings */,
 				A8189BA61947C701004B311B /* main.m */,
@@ -261,6 +264,7 @@
 			files = (
 				A8189BB31947C701004B311B /* Images.xcassets in Resources */,
 				A8189BA51947C701004B311B /* InfoPlist.strings in Resources */,
+				A8189BDC19507FAA004B311B /* to-do-list in Resources */,
 				A8189BAE1947C701004B311B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
