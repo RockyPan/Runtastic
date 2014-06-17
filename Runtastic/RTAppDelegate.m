@@ -31,7 +31,7 @@
 - (NSManagedObjectModel *) managedObjectModel
 {
     if (nil == _managedObjectModel) {
-        NSURL * modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+        NSURL * modelURL = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"momd"];
         _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     }
     return _managedObjectModel;
