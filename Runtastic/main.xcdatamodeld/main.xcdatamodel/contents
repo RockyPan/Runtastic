@@ -4,11 +4,15 @@
         <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mem" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="interval" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Loop" inverseName="activity" inverseEntity="Loop" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="activities" inverseEntity="Location" syncable="YES"/>
         <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="activities" inverseEntity="Type" syncable="YES"/>
+    </entity>
+    <entity name="Location" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="location" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <entity name="Loop" syncable="YES">
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
@@ -21,8 +25,9 @@
         <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="type" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-324" positionY="-63" width="128" height="163"/>
+        <element name="Activity" positionX="-324" positionY="-63" width="128" height="165"/>
         <element name="Loop" positionX="-110" positionY="-90" width="128" height="103"/>
         <element name="Type" positionX="-63" positionY="102" width="128" height="73"/>
+        <element name="Location" positionX="-189" positionY="27" width="128" height="73"/>
     </elements>
 </model>

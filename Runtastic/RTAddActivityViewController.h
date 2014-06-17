@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTPickDateViewController.h"
+#import "RTAddActivityDelegate.h"
 
-@interface RTAddActivityViewController : UITableViewController <RTPickDateDelegate>
+@interface RTAddActivityViewController : UITableViewController <RTAddActivityDelegate>
 
 @property (nonatomic, strong) NSDate * actDate;
+
+- (IBAction)done:(id)sender;
 
 @end

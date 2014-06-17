@@ -35,12 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    id vc = segue.destinationViewController;
-    [vc setValue:self.datePicker.date forKey:@"date"];
-}
-
 /*
 #pragma mark - Navigation
 
@@ -54,7 +48,7 @@
 
 - (IBAction)done:(id)sender
 {
-    
+    [self.delegate setDate:self.datePicker.date];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

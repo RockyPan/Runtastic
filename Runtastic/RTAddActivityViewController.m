@@ -61,7 +61,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     id vc = segue.destinationViewController;
-    [vc setObject:self forKey:@"_delegate"];
+    [vc setValue:self forKey:@"delegate"];
+}
+
+- (IBAction)done:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

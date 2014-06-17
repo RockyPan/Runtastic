@@ -11,6 +11,7 @@
 		5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222615194E857C0029B859 /* RTAddActivityViewController.m */; };
 		5C222619194E87AB0029B859 /* RTActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222618194E87AB0029B859 /* RTActivitiesViewController.m */; };
 		5C22261C194EE31C0029B859 /* RTPickDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22261B194EE31C0029B859 /* RTPickDateViewController.m */; };
+		5C22261F194FE6AF0029B859 /* RTLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22261E194FE6AF0029B859 /* RTLocationPickerViewController.m */; };
 		A8189B9B1947C701004B311B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9A1947C701004B311B /* Foundation.framework */; };
 		A8189B9D1947C701004B311B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9C1947C701004B311B /* CoreGraphics.framework */; };
 		A8189B9F1947C701004B311B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9E1947C701004B311B /* UIKit.framework */; };
@@ -47,6 +48,9 @@
 		5C222618194E87AB0029B859 /* RTActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTActivitiesViewController.m; sourceTree = "<group>"; };
 		5C22261A194EE31C0029B859 /* RTPickDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTPickDateViewController.h; sourceTree = "<group>"; };
 		5C22261B194EE31C0029B859 /* RTPickDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTPickDateViewController.m; sourceTree = "<group>"; };
+		5C22261D194FE6AF0029B859 /* RTLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLocationPickerViewController.h; sourceTree = "<group>"; };
+		5C22261E194FE6AF0029B859 /* RTLocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLocationPickerViewController.m; sourceTree = "<group>"; };
+		5C222620194FE9890029B859 /* RTAddActivityDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTAddActivityDelegate.h; sourceTree = "<group>"; };
 		A8189B971947C701004B311B /* Runtastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runtastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8189B9A1947C701004B311B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8189B9C1947C701004B311B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +136,9 @@
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
 				A8189BAC1947C701004B311B /* Main.storyboard */,
+				5C22261D194FE6AF0029B859 /* RTLocationPickerViewController.h */,
+				5C222620194FE9890029B859 /* RTAddActivityDelegate.h */,
+				5C22261E194FE6AF0029B859 /* RTLocationPickerViewController.m */,
 				5C22261A194EE31C0029B859 /* RTPickDateViewController.h */,
 				5C22261B194EE31C0029B859 /* RTPickDateViewController.m */,
 				5C22261119483D830029B859 /* RTBaseActivityTableCell.h */,
@@ -274,9 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C22261319483D830029B859 /* RTBaseActivityTableCell.m in Sources */,
+				5C22261F194FE6AF0029B859 /* RTLocationPickerViewController.m in Sources */,
 				A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */,
 				A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */,
-				A8189BB11947C701004B311B /* RTViewController.m in Sources */,
 				5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */,
 				A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */,
 				A8189BA71947C701004B311B /* main.m in Sources */,

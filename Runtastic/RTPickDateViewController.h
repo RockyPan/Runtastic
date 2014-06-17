@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol RTPickDateDelegate <NSObject>
-
-- (void)setDate:(NSDate *)date;
-
-@end
+#import "RTAddActivityDelegate.h"
 
 @interface RTPickDateViewController : UIViewController
 
-@property (nonatomic, weak) id<RTPickDateDelegate> delegate;
+@property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 - (IBAction)done:(id)sender;
