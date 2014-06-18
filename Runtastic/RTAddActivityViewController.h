@@ -12,7 +12,12 @@
 @interface RTAddActivityViewController : UITableViewController <RTAddActivityDelegate>
 
 @property (nonatomic, strong) NSDate * actDate;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UITextField *textDate;
+@property (strong, nonatomic) IBOutlet UIToolbar *accessoryView;
 
-- (IBAction)done:(id)sender;
+- (IBAction)doneAddActivity:(id)sender;
+- (IBAction)donePickDate:(id)sender;
+- (IBAction)dateChanged:(id)sender;
 
 @end

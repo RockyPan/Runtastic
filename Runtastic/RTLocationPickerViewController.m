@@ -41,16 +41,21 @@
 
     self.picker.dataSource = self;
     self.picker.delegate = self;
+    self.textNewLocation.delegate = self;
     self.appDelegate = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
  
-    // Do any additional setup after loading the view.
-    //self.locations = [[NSArray alloc] initWithObjects:@"梅林一村小操场", @"大沙河公园", @"深大操场", @"深圳湾绿道", nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self getLocations];
+}
+
+//PK 触摸屏幕时结束编辑，收回软键盘
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,12 +66,10 @@
 
 - (IBAction)done:(id)sender
 {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)addNewLocation:(id)sender {
-    //PK to-do
     NSManagedObjectContext * context = self.appDelegate.managedObjectContext;
     
     NSManagedObject * location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
@@ -74,6 +77,7 @@
     [self.appDelegate saveContext];
     [self getLocations];
     [self.picker reloadAllComponents];
+    self.textNewLocation.text = @"";
 }
 
 /*
@@ -104,4 +108,23 @@
     return [self.locations[row] valueForKey:@"location"];
 }
 
+#pragma mark - textfield
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    CGPoint center = self.view.center;
+    center.y -= 100;
+    self.view.center = center;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    CGPoint center = self.view.center;
+    center.y += 100;
+    self.view.center = center;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    [self addNewLocation:nil];
+    return YES;
+}
 @end

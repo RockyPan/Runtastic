@@ -32,7 +32,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     self.actDate = [[NSDate alloc] init];
+    self.textDate.inputView = self.datePicker;
+    self.textDate.inputAccessoryView = self.accessoryView;
+    self.textDate.tintColor = [UIColor clearColor]; //PK 隐藏光标
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,9 +52,8 @@
     NSLog(@"test");
     UITableViewCell * dateCell = (UITableViewCell *)[self.view viewWithTag:101];
     dateCell.textLabel.text = @"日期：";
-    NSDateFormatter * df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy年MM月dd日HH时mm分"];
-    dateCell.detailTextLabel.text = [df stringFromDate:self.actDate];
+    dateCell.detailTextLabel.text = [self formatDate:self.actDate];
+    self.textDate.text = [self formatDate:self.actDate];
 }
 
 - (void)setDate:(NSDate *)date
@@ -60,13 +63,30 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    id vc = segue.destinationViewController;
-    [vc setValue:self forKey:@"delegate"];
+    //id vc = segue.destinationViewController;
+    //[vc setValue:self forKey:@"delegate"];
 }
 
-- (IBAction)done:(id)sender
+- (IBAction)doneAddActivity:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)dateChanged:(id)sender {
+    self.textDate.text = [self formatDate:((UIDatePicker *)sender).date];
+}
+
+- (IBAction)donePickDate:(id)sender {
+    self.textDate.text = [self formatDate:self.datePicker.date];
+    [self.view endEditing:YES];
+}
+
+- (NSString *)formatDate:(NSDate *)date {
+    NSString * res = nil;
+    NSDateFormatter * df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy年MM月dd日HH时mm分"];
+    res = [df stringFromDate:date];
+    return res;
 }
 
 #pragma mark - Table view data source

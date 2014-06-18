@@ -1,18 +1,18 @@
 //
-//  RTPickDateViewController.m
+//  RTDatePickerViewController.m
 //  Runtastic
 //
-//  Created by PanKyle on 14-6-16.
+//  Created by PanKyle on 14-6-18.
 //  Copyright (c) 2014年 PanKyle. All rights reserved.
 //
 
-#import "RTPickDateViewController.h"
+#import "RTDatePickerViewController.h"
 
-@interface RTPickDateViewController ()
+@interface RTDatePickerViewController ()
 
 @end
 
-@implementation RTPickDateViewController
+@implementation RTDatePickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationItem setHidesBackButton:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,11 +46,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)done:(id)sender
-{
-    [self.delegate setDate:self.datePicker.date];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

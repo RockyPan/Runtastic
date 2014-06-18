@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RTAddActivityDelegate.h"
 
-@interface RTLocationPickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface RTLocationPickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
 
