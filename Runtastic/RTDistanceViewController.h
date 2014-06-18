@@ -11,6 +11,7 @@
 
 @interface RTDistanceViewController : UITableViewController
 
+@property (nonatomic, strong) NSNumber * distance;
 @property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *textDistance;
 

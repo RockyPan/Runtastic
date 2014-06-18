@@ -29,6 +29,7 @@
 		A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BD31949D0F8004B311B /* RTMainTableViewController.m */; };
 		A8189BDC19507FAA004B311B /* to-do-list in Resources */ = {isa = PBXBuildFile; fileRef = A8189BDB19507FAA004B311B /* to-do-list */; };
 		A8189BDF1951D2B5004B311B /* RTDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BDE1951D2B5004B311B /* RTDistanceViewController.m */; };
+		A8189BE21952542B004B311B /* RTDurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BE11952542B004B311B /* RTDurationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		A8189BDB19507FAA004B311B /* to-do-list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "to-do-list"; sourceTree = "<group>"; };
 		A8189BDD1951D2B5004B311B /* RTDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTDistanceViewController.h; sourceTree = "<group>"; };
 		A8189BDE1951D2B5004B311B /* RTDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTDistanceViewController.m; sourceTree = "<group>"; };
+		A8189BE01952542B004B311B /* RTDurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTDurationViewController.h; sourceTree = "<group>"; };
+		A8189BE11952542B004B311B /* RTDurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTDurationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
 				A8189BAC1947C701004B311B /* Main.storyboard */,
+				A8189BE01952542B004B311B /* RTDurationViewController.h */,
+				A8189BE11952542B004B311B /* RTDurationViewController.m */,
 				A8189BDD1951D2B5004B311B /* RTDistanceViewController.h */,
 				A8189BDE1951D2B5004B311B /* RTDistanceViewController.m */,
 				5C22261D194FE6AF0029B859 /* RTLocationPickerViewController.h */,
@@ -297,6 +302,7 @@
 				5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */,
 				A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */,
 				A8189BA71947C701004B311B /* main.m in Sources */,
+				A8189BE21952542B004B311B /* RTDurationViewController.m in Sources */,
 				5C22262319519D610029B859 /* RTDatePickerViewController.m in Sources */,
 				5C222619194E87AB0029B859 /* RTActivitiesViewController.m in Sources */,
 			);

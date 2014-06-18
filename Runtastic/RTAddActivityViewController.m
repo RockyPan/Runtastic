@@ -51,8 +51,11 @@
     [vc setValue:self forKey:@"delegate"];
 
     if ([segue.identifier isEqualToString:@"segueDate"]) {
-//        [vc setValue:self.actDate forKeyPath:@"picker.date"];
         [vc setValue:self.actDate forKey:@"actDate"];
+    }
+    if ([segue.identifier isEqualToString:@"segueDistance"]) {
+        [vc setValue:[NSNumber numberWithFloat:(self.distance)]
+              forKey:@"distance"];
     }
 }
 
@@ -71,11 +74,11 @@
 
 #pragma mark - Add Activity Delegate
 
-- (void)setDate:(NSDate *)date {
+- (void)setDateValue:(NSDate *)date {
     self.actDate = date;
 }
 
-- (void) setDistance:(float)distance {
+- (void) setDistanceValue:(float)distance {
     self.distance = distance;
 }
 

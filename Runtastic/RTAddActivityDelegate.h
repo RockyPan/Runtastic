@@ -12,7 +12,7 @@
 
 @optional
 
-- (void) setDate:(NSDate *)date;
-- (void) setDistance:(float)distance;
+- (void) setDateValue:(NSDate *)date;
+- (void) setDistanceValue:(float)distance;
 
 @end
