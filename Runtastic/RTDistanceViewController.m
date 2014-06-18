@@ -1,18 +1,18 @@
 //
-//  RTAddActivityViewController.m
+//  RTDistanceViewController.m
 //  Runtastic
 //
-//  Created by PanKyle on 14-6-16.
+//  Created by PanKyle on 14-6-18.
 //  Copyright (c) 2014年 PanKyle. All rights reserved.
 //
 
-#import "RTAddActivityViewController.h"
+#import "RTDistanceViewController.h"
 
-@interface RTAddActivityViewController ()
+@interface RTDistanceViewController ()
 
 @end
 
-@implementation RTAddActivityViewController
+@implementation RTDistanceViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,79 +32,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.actDate = [[NSDate alloc] init];
-    self.distance = 0.0;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)didReceiveMemoryWarning
 {
-    [super viewWillAppear:animated];
-    
-    self.labelDate.text = [self formatDate:self.actDate];
-    self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance];
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    id vc = segue.destinationViewController;
-    [vc setValue:self forKey:@"delegate"];
-
-    if ([segue.identifier isEqualToString:@"segueDate"]) {
-//        [vc setValue:self.actDate forKeyPath:@"picker.date"];
-        [vc setValue:self.actDate forKey:@"actDate"];
-    }
-}
-
-- (IBAction)doneAddActivity:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (NSString *)formatDate:(NSDate *)date {
-    NSString * res = nil;
-    NSDateFormatter * df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy年MM月dd日HH时mm分"];
-    res = [df stringFromDate:date];
-    return res;
-}
-
-#pragma mark - Add Activity Delegate
-
-- (void)setDate:(NSDate *)date {
-    self.actDate = date;
-}
-
-- (void) setDistance:(float)distance {
-    self.distance = distance;
-}
-
-#pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-*/
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -155,4 +90,8 @@
 }
 */
 
+- (IBAction)done:(id)sender {
+    [self.delegate setDistance:[self.textDistance.text floatValue]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

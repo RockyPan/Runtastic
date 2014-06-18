@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationItem setHidesBackButton:YES];
+    self.picker.date = self.actDate;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,5 +47,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)done:(id)sender {
+    [self.delegate setDate:self.picker.date];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

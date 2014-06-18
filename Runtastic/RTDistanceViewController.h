@@ -1,5 +1,5 @@
 //
-//  RTDatePickerViewController.h
+//  RTDistanceViewController.h
 //  Runtastic
 //
 //  Created by PanKyle on 14-6-18.
@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "RTAddActivityDelegate.h"
 
-@interface RTDatePickerViewController : UIViewController
+@interface RTDistanceViewController : UITableViewController
 
 @property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
-@property (nonatomic, strong) NSDate * actDate;
-@property (weak, nonatomic) IBOutlet UIDatePicker *picker;
+@property (weak, nonatomic) IBOutlet UITextField *textDistance;
 
 - (IBAction)done:(id)sender;
 
