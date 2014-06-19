@@ -23,14 +23,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.navigationItem setHidesBackButton:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    self.picker.date = self.duration;
 }
 
 
-
+- (IBAction)done:(id)sender {
+    [self.delegate setDurationValue:self.picker.date];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

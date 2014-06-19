@@ -35,6 +35,7 @@
     
     self.actDate = [[NSDate alloc] init];
     self.distance = 0.0;
+    self.duration = [self startDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,6 +44,7 @@
     
     self.labelDate.text = [self formatDate:self.actDate];
     self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance];
+    self.labelDuration.text = [self formatDuration:self.duration];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -56,6 +58,9 @@
     if ([segue.identifier isEqualToString:@"segueDistance"]) {
         [vc setValue:[NSNumber numberWithFloat:(self.distance)]
               forKey:@"distance"];
+    }
+    if ([segue.identifier isEqualToString:@"segueDuration"]) {
+        [vc setValue:self.duration forKey:@"duration"];
     }
 }
 
@@ -72,14 +77,37 @@
     return res;
 }
 
+- (NSString *)formatDuration:(NSDate *)duration {
+    NSString * res = nil;
+    
+    NSTimeInterval du = [duration timeIntervalSinceDate:[self startDate]];
+    NSInteger min = du / 60;
+    //if (0 == min) return res;
+    if (min < 60) {
+        res = [[NSString alloc] initWithFormat:@"%d分钟", min];
+    } else {
+        res = [[NSString alloc] initWithFormat:@"%d小时%d分钟", min/60, min%60];
+    }
+    return res;
+}
+
+- (NSDate *)startDate {
+    //PK 减去时差确保时间是0点
+    return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:-[[NSTimeZone systemTimeZone] secondsFromGMT]];
+}
+
 #pragma mark - Add Activity Delegate
 
 - (void)setDateValue:(NSDate *)date {
     self.actDate = date;
 }
 
-- (void) setDistanceValue:(float)distance {
+- (void)setDistanceValue:(float)distance {
     self.distance = distance;
+}
+
+- (void)setDurationValue:(NSDate *)duration {
+    self.duration = duration;
 }
 
 #pragma mark - Table view data source

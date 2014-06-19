@@ -14,5 +14,6 @@
 
 - (void) setDateValue:(NSDate *)date;
 - (void) setDistanceValue:(float)distance;
+- (void) setDurationValue:(NSDate *)duration;
 
 @end

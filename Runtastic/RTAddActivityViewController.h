@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSDate * actDate;
 @property (nonatomic, assign) float distance;
+@property (nonatomic, strong) NSDate * duration;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDistance;
 @property (weak, nonatomic) IBOutlet UILabel *labelDuration;
