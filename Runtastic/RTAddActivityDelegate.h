@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @protocol RTAddActivityDelegate <NSObject>
 
@@ -15,5 +16,6 @@
 - (void) setDateValue:(NSDate *)date;
 - (void) setDistanceValue:(float)distance;
 - (void) setDurationValue:(NSDate *)duration;
+- (void) setLocationValue:(NSManagedObject *)location;
 
 @end

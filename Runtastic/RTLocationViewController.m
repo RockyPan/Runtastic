@@ -48,12 +48,18 @@
     
     self.appDelegate = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
     [self getLocations];
+    
+    [self.navigationItem setHidesBackButton:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Table view data source
@@ -78,15 +84,43 @@
     }
     
     if (1 == indexPath.section) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellLocation"];
-        //cell.textLabel.text = [self.locations[indexPath.row] valueForKey:@"location"];
-        NSInteger row = indexPath.row;
-        //cell.textLabel.text = @"test";
-    
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cellLocation"];
+        cell.textLabel.text = [self.locations[indexPath.row] valueForKey:@"location"];
+        if (self.location == self.locations[indexPath.row]) {
+            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString * res = nil;
+    if (0 == section) {
+        res = @"添加一个新地点：";
+    } else {
+        res = @"选择地点：";
+    }
+   return res;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
+    
+    if (0 == indexPath.section) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        return;
+    }
+    
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,4 +170,25 @@
 }
 */
 
+- (IBAction)addNewLocation:(id)sender {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UITextField * text = (UITextField *)[cell viewWithTag:102];
+    NSString * location = text.text;
+    text.text = @"";
+    
+    NSManagedObjectContext * context = self.appDelegate.managedObjectContext;
+    NSManagedObject * newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
+    [newLocation setValue:location forKey:@"location"];
+    [self.appDelegate saveContext];
+    [self getLocations];
+    
+    [self.tableView reloadData];
+}
+
+- (IBAction)done:(id)sender {
+    NSInteger row = [self.tableView indexPathForSelectedRow].row;
+    //NSManagedObjectID * obj = [self.locations[row] objectID];
+    [self.delegate setLocationValue:self.locations[row]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

@@ -7,8 +7,16 @@
 //
 
 #import "RTAddActivityViewController.h"
+#import "RTAppDelegate.h"
 
 @interface RTAddActivityViewController ()
+
+@property (nonatomic, weak) RTAppDelegate * appDelegate;
+
+@property (nonatomic, strong) NSDate * actDate;
+@property (nonatomic, assign) float distance;
+@property (nonatomic, strong) NSDate * duration;
+@property (nonatomic, retain) NSManagedObject * location;
 
 @end
 
@@ -45,6 +53,9 @@
     self.labelDate.text = [self formatDate:self.actDate];
     self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance];
     self.labelDuration.text = [self formatDuration:self.duration];
+    if (nil != self.location) {
+        self.labelLocation.text = [self.location valueForKey:@"location"];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -61,6 +72,9 @@
     }
     if ([segue.identifier isEqualToString:@"segueDuration"]) {
         [vc setValue:self.duration forKey:@"duration"];
+    }
+    if ([segue.identifier isEqualToString:@"segueLocation"]) {
+        [vc setValue:self.location forKey:@"location"];
     }
 }
 
@@ -108,6 +122,13 @@
 
 - (void)setDurationValue:(NSDate *)duration {
     self.duration = duration;
+}
+
+- (void)setLocationValue:(NSManagedObject *) location {
+//    NSError * err = [[NSError alloc] init];
+//    NSManagedObject * location = [self.appDelegate.managedObjectContext existingObjectWithID:objID error:&err];
+    self.location = location;
+    self.labelLocation.text = [location valueForKey:@"location"];
 }
 
 #pragma mark - Table view data source

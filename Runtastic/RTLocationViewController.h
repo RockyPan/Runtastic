@@ -13,5 +13,9 @@
 @interface RTLocationViewController : UITableViewController
 
 @property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
+@property (nonatomic, retain) NSManagedObject * location;
+
+- (IBAction)addNewLocation:(id)sender;
+- (IBAction)done:(id)sender;
 
 @end

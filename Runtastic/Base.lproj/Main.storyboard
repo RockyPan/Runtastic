@@ -185,7 +185,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="d7Q-gb-3YF" kind="push" id="Fq9-RE-fez"/>
+                                            <segue destination="d7Q-gb-3YF" kind="push" identifier="segueLocation" id="Fq9-RE-fez"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2cl-Ft-w9I">
@@ -420,7 +420,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入新增地点" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-UX-JzA">
+                                        <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入新增地点" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-UX-JzA">
                                             <rect key="frame" x="20" y="7" width="237" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -432,15 +432,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <state key="normal" title="添加">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="addNewLocation:" destination="d7Q-gb-3YF" eventType="touchUpInside" id="am6-f3-YAp"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellLocation" id="Rla-9b-42m">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellLocation" id="Rla-9b-42m">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rla-9b-42m" id="d9b-7r-CFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -451,7 +454,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="d7Q-gb-3YF" id="X64-hX-BnP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="地点" id="mXM-ps-jpO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="地点" id="mXM-ps-jpO">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="nFB-Be-FV4">
+                            <connections>
+                                <action selector="done:" destination="d7Q-gb-3YF" id="3uD-NF-6x0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pY-xD-k4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
