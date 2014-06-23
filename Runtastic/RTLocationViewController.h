@@ -13,9 +13,15 @@
 @interface RTLocationViewController : UITableViewController
 
 @property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
-@property (nonatomic, retain) NSManagedObject * location;
+@property (nonatomic, retain) NSManagedObject * selectedItem;
 
-- (IBAction)addNewLocation:(id)sender;
+//PK 以下信息由上层navigation item 传入
+@property (nonatomic, copy) NSString * entityName;    //对应的实体名
+@property (nonatomic, copy) NSString * attributeName; //对应属性名
+@property (nonatomic, copy) NSString * caption;       //显示名字
+@property (nonatomic, copy) NSString * callBackName;
+
+- (IBAction)addNew:(id)sender;
 - (IBAction)done:(id)sender;
 
 @end

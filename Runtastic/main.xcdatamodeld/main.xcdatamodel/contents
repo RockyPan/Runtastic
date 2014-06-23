@@ -25,9 +25,9 @@
         <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="type" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-324" positionY="-63" width="128" height="165"/>
-        <element name="Loop" positionX="-110" positionY="-90" width="128" height="103"/>
-        <element name="Type" positionX="-63" positionY="102" width="128" height="73"/>
-        <element name="Location" positionX="-189" positionY="27" width="128" height="73"/>
+        <element name="Activity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Location" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Loop" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Type" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

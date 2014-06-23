@@ -17,6 +17,7 @@
 @property (nonatomic, assign) float distance;
 @property (nonatomic, strong) NSDate * duration;
 @property (nonatomic, retain) NSManagedObject * location;
+@property (nonatomic, retain) NSManagedObject * type;
 
 @end
 
@@ -74,7 +75,18 @@
         [vc setValue:self.duration forKey:@"duration"];
     }
     if ([segue.identifier isEqualToString:@"segueLocation"]) {
-        [vc setValue:self.location forKey:@"location"];
+        [vc setValue:self.location forKey:@"selectedItem"];
+        [vc setValue:@"Location" forKey:@"entityName"];
+        [vc setValue:@"location" forKey:@"attributeName"];
+        [vc setValue:@"地点" forKey:@"caption"];
+        [vc setValue:@"setLocationValue:" forKey:@"callBackName"];
+    }
+    if ([segue.identifier isEqualToString:@"segueType"]) {
+        [vc setValue:self.type forKey:@"selectedItem"];
+        [vc setValue:@"Type" forKey:@"entityName"];
+        [vc setValue:@"typeName" forKey:@"attributeName"];
+        [vc setValue:@"类型" forKey:@"caption"];
+        [vc setValue:@"setTypeValue:" forKey:@"callBackName"];
     }
 }
 
@@ -129,6 +141,11 @@
 //    NSManagedObject * location = [self.appDelegate.managedObjectContext existingObjectWithID:objID error:&err];
     self.location = location;
     self.labelLocation.text = [location valueForKey:@"location"];
+}
+
+- (void)setTypeValue:(NSManagedObject *)type {
+    self.type = type;
+    self.labelType.text = [type valueForKey:@"typeName"];
 }
 
 #pragma mark - Table view data source

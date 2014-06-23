@@ -17,5 +17,6 @@
 - (void) setDistanceValue:(float)distance;
 - (void) setDurationValue:(NSDate *)duration;
 - (void) setLocationValue:(NSManagedObject *)location;
+- (void) setTypeValue:(NSManagedObject *)type;
 
 @end

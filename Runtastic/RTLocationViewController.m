@@ -12,19 +12,19 @@
 
 @interface RTLocationViewController ()
 
-@property (nonatomic, strong) NSArray * locations;
+@property (nonatomic, strong) NSArray * items;
 @property (nonatomic, weak) RTAppDelegate * appDelegate;
 
 @end
 
 @implementation RTLocationViewController
 
-- (void)getLocations {
+- (void)getItems {
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    NSEntityDescription * entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:self.appDelegate.managedObjectContext];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:self.appDelegate.managedObjectContext];
     [request setEntity:entity];
     NSError * error = nil;
-    self.locations = [[self.appDelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    self.items = [[self.appDelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -47,19 +47,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.appDelegate = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
-    [self getLocations];
+    [self getItems];
     
     [self.navigationItem setHidesBackButton:YES];
+    self.navigationItem.title = self.caption;
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
+- (UITextField *)getTextNew {
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UITextField * text = (UITextField *)[cell viewWithTag:102];
+    return text;
 }
 
 #pragma mark - Table view data source
@@ -72,7 +70,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (0 == section) return 1;
-    else return [self.locations count];
+    else return [self.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,12 +79,14 @@
     
     if (0 == indexPath.section) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellAddNew"];
+        UITextField * text = (UITextField *)[cell viewWithTag:102];
+        text.placeholder = [NSString stringWithFormat:@"输入新增%@", self.caption];
     }
     
     if (1 == indexPath.section) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cellLocation"];
-        cell.textLabel.text = [self.locations[indexPath.row] valueForKey:@"location"];
-        if (self.location == self.locations[indexPath.row]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cellItem"];
+        cell.textLabel.text = [self.items[indexPath.row] valueForKey:self.attributeName];
+        if (self.selectedItem == self.items[indexPath.row]) {
             [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -97,9 +97,9 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString * res = nil;
     if (0 == section) {
-        res = @"添加一个新地点：";
+        res = [NSString stringWithFormat:@"添加一个新%@：", self.caption];
     } else {
-        res = @"选择地点：";
+        res = [NSString stringWithFormat:@"选择%@：", self.caption];
     }
    return res;
 }
@@ -170,25 +170,28 @@
 }
 */
 
-- (IBAction)addNewLocation:(id)sender {
-    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UITextField * text = (UITextField *)[cell viewWithTag:102];
+- (IBAction)addNew:(id)sender {
+    UITextField * text = [self getTextNew];
     NSString * location = text.text;
     text.text = @"";
     
     NSManagedObjectContext * context = self.appDelegate.managedObjectContext;
-    NSManagedObject * newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:context];
-    [newLocation setValue:location forKey:@"location"];
+    NSManagedObject * newItem = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:context];
+    [newItem setValue:location forKey:self.attributeName];
     [self.appDelegate saveContext];
-    [self getLocations];
+    [self getItems];
+    
+    //PK 表格重载时确保新加地点被选中
+    self.selectedItem = newItem;
     
     [self.tableView reloadData];
 }
 
 - (IBAction)done:(id)sender {
     NSInteger row = [self.tableView indexPathForSelectedRow].row;
-    //NSManagedObjectID * obj = [self.locations[row] objectID];
-    [self.delegate setLocationValue:self.locations[row]];
+    //[self.delegate setLocationValue:self.items[row]];
+    SEL callBack = NSSelectorFromString(self.callBackName);
+    [self.delegate performSelector:callBack withObject:self.items[row]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end
