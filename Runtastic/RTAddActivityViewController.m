@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSDate * duration;
 @property (nonatomic, retain) NSManagedObject * location;
 @property (nonatomic, retain) NSManagedObject * type;
+@property (nonatomic, retain) NSArray * loops;
 
 @end
 
@@ -87,6 +88,9 @@
         [vc setValue:@"typeName" forKey:@"attributeName"];
         [vc setValue:@"类型" forKey:@"caption"];
         [vc setValue:@"setTypeValue:" forKey:@"callBackName"];
+    }
+    if ([segue.identifier isEqualToString:@"segueLoops"]) {
+        [vc setValue:self.loops forKey:@"loops"];
     }
 }
 

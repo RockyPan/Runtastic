@@ -237,7 +237,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="XlI-M3-rlN" kind="push" id="OKG-vd-ZET"/>
+                                            <segue destination="XlI-M3-rlN" kind="push" identifier="segueLoops" id="OKG-vd-ZET"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="O3G-m1-PAy">
@@ -567,16 +567,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3382" y="-74"/>
         </scene>
-        <!--Table View Controller - 分段信息-->
+        <!--Loop View Controller - 分段信息-->
         <scene sceneID="NOi-07-Rk6">
             <objects>
-                <tableViewController id="XlI-M3-rlN" sceneMemberID="viewController">
+                <tableViewController id="XlI-M3-rlN" customClass="RTLoopViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cls-vs-9gR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Fwj-xE-T8c">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellInfo" id="Fwj-xE-T8c">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fwj-xE-T8c" id="NG5-Te-1qQ">
@@ -602,10 +602,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2925" y="653"/>
         </scene>
-        <!--Table View Controller - 添加分段-->
+        <!--Add Loop View Controller - 添加分段-->
         <scene sceneID="pKr-kx-mF9">
             <objects>
-                <tableViewController id="Al7-7I-ZaU" sceneMemberID="viewController">
+                <tableViewController id="Al7-7I-ZaU" customClass="RTAddLoopViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="iy2-Kv-H44">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,7 +646,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="添加分段" id="n9T-sD-dJm">
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="UF0-c7-Y8T"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="UF0-c7-Y8T">
+                            <connections>
+                                <action selector="done:" destination="Al7-7I-ZaU" id="NeM-g2-yWY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4E-gy-4D7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -746,6 +750,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QIe-bT-nQI"/>
+        <segue reference="Fq9-RE-fez"/>
     </inferredMetricsTieBreakers>
 </document>

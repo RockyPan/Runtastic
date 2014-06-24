@@ -18,5 +18,6 @@
 - (void) setDurationValue:(NSDate *)duration;
 - (void) setLocationValue:(NSManagedObject *)location;
 - (void) setTypeValue:(NSManagedObject *)type;
+- (void) setLoopsValue:(NSArray *) loops;
 
 @end
