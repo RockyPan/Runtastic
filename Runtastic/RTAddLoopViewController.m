@@ -26,27 +26,44 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.duration = [NSNumber numberWithInt:0];
+    self.distance = [NSNumber numberWithInt:1000];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     self.lableNo.text = self.loopNo.stringValue;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    NSInteger du = self.duration.integerValue;
+    NSInteger m = du / 60;
+    NSInteger s = du % 60;
+    NSString * duS = [NSString stringWithFormat:@"%d分%d秒", m, s];
+    self.lableDuration.text = duS;
+    
+    NSInteger di = self.distance.integerValue;
+    NSString * diS = nil;
+    if (di >= 1000) {
+        if (0 == di % 1000) {
+            diS = [NSString stringWithFormat:@"%d公里", di / 1000];
+        } else {
+            diS = [NSString stringWithFormat:@"%d公里%d米", di / 1000, di % 1000];
+        }
+    } else {
+        diS = [NSString stringWithFormat:@"%d米", di];
+    }
+    self.labelDistance.text = diS;
+    
 }
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     id destinationVC = [segue destinationViewController];
-    
+    [destinationVC setValue:self.duration forKey:@"duration"];
     
 }
 

@@ -12,6 +12,8 @@
 
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, strong) NSNumber * loopNo;
+@property (nonatomic, strong) NSNumber * duration; //PK 秒
+@property (nonatomic, strong) NSNumber * distance; //PK 米
 
 @property (weak, nonatomic) IBOutlet UILabel *lableType;
 @property (weak, nonatomic) IBOutlet UILabel *lableDuration;
