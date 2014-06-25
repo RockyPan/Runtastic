@@ -19,15 +19,20 @@
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="loopNo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="activity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="interval" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoopType" syncable="YES"/>
+    </entity>
+    <entity name="LoopType" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Type" syncable="YES">
         <attribute name="typeName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="type" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Location" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Loop" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Type" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Activity" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Location" positionX="0" positionY="0" width="128" height="73"/>
+        <element name="Loop" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="Type" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="LoopType" positionX="18" positionY="81" width="128" height="58"/>
     </elements>
 </model>

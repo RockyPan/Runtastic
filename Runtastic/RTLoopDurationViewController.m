@@ -1,18 +1,18 @@
 //
-//  RTLoopViewController.m
+//  RTLoopDurationViewController.m
 //  Runtastic
 //
-//  Created by PanKyle on 14-6-24.
+//  Created by PanKyle on 14-6-25.
 //  Copyright (c) 2014年 PanKyle. All rights reserved.
 //
 
-#import "RTLoopViewController.h"
+#import "RTLoopDurationViewController.h"
 
-@interface RTLoopViewController ()
+@interface RTLoopDurationViewController ()
 
 @end
 
-@implementation RTLoopViewController
+@implementation RTLoopDurationViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,29 +40,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *)loopInfo:(NSManagedObject *) loop {
-    NSString * info = nil;
-    return info;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.loops count];
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellInfo" forIndexPath:indexPath];
-    cell.textLabel.text = [self loopInfo:self.loops[indexPath.row]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
     return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -102,19 +105,17 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
-//PK add loop
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    id addLoopVC = segue.destinationViewController;
-    [addLoopVC setValue:self forKey:@"delegate"];
-    [addLoopVC setValue:[NSNumber numberWithInt:[self.loops count] + 1] forKeyPath:@"loopNo"];
-    
-    
-    
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
-
+- (IBAction)done:(id)sender {
+}
 @end
