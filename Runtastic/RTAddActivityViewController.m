@@ -8,6 +8,7 @@
 
 #import "RTAddActivityViewController.h"
 #import "RTAppDelegate.h"
+#import "RTFormater.h"
 
 @interface RTAddActivityViewController ()
 
@@ -46,6 +47,7 @@
     self.actDate = [[NSDate alloc] init];
     self.distance = 0.0;
     self.duration = [self startDate];
+    self.loops = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,6 +60,20 @@
     if (nil != self.location) {
         self.labelLocation.text = [self.location valueForKey:@"location"];
     }
+    self.labelLoopInfo.text = [self loopInfo:self.loops];
+}
+
+- (NSString *)loopInfo:(NSArray *)loops {
+    NSString * res = nil;
+    NSInteger count = [loops count];
+    NSInteger distance = 0;
+    NSInteger duration = 0;
+    for (NSManagedObject * obj in loops) {
+        distance += ((NSNumber *)[obj valueForKey:@"distance"]).integerValue;
+        duration += ((NSNumber *)[obj valueForKey:@"duration"]).integerValue;
+    }
+    res = [NSString stringWithFormat:@"共%d个分段，%@，%@", count, [RTFormater stringWithDistance:[NSNumber numberWithInteger:distance]], [RTFormater stringWithDuration:[NSNumber numberWithInteger:duration]]];
+    return res;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
