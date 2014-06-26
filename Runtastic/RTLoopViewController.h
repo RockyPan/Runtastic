@@ -12,6 +12,6 @@
 @interface RTLoopViewController : UITableViewController
 
 @property (nonatomic, weak) id <RTAddActivityDelegate> delegate;
-@property (nonatomic, retain) NSArray * loops;
+@property (nonatomic, retain) NSMutableArray * loops;
 
 @end

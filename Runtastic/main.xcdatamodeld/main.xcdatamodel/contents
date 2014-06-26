@@ -15,7 +15,7 @@
         <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="location" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <entity name="Loop" syncable="YES">
-        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="loopNo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="activity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="interval" inverseEntity="Activity" syncable="YES"/>

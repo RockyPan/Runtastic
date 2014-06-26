@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface RTAddLoopViewController : UITableViewController
 
@@ -14,6 +15,7 @@
 @property (nonatomic, strong) NSNumber * loopNo;
 @property (nonatomic, strong) NSNumber * duration; //PK 秒
 @property (nonatomic, strong) NSNumber * distance; //PK 米
+@property (nonatomic, strong) NSManagedObject * type;
 
 @property (weak, nonatomic) IBOutlet UILabel *lableType;
 @property (weak, nonatomic) IBOutlet UILabel *lableDuration;

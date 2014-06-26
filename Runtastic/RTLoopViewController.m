@@ -7,6 +7,7 @@
 //
 
 #import "RTLoopViewController.h"
+#import "RTFormater.h"
 
 @interface RTLoopViewController ()
 
@@ -32,16 +33,25 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.loops = [[NSMutableArray alloc] init];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 - (NSString *)loopInfo:(NSManagedObject *) loop {
     NSString * info = nil;
+    NSNumber * loopNo = [loop valueForKey:@"loopNo"];
+    NSNumber * distance = [loop valueForKey:@"distance"];
+    NSNumber * duration = [loop valueForKey:@"duration"];
+    NSManagedObject * typeObj = [loop valueForKey:@"type"];
+    NSString * type = [typeObj valueForKey:@"name"];
+    info = [NSString stringWithFormat:@"分段%2d %@ 距离：%@ 用时：%@", [loopNo integerValue], type, [RTFormater stringWithDistance:distance], [RTFormater stringWithDuration:duration]];
+    
     return info;
 }
 
