@@ -86,9 +86,11 @@
     if (1 == indexPath.section) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellItem"];
         cell.textLabel.text = [self.items[indexPath.row] valueForKey:self.attributeName];
-        if (self.selectedItem == self.items[indexPath.row]) {
+        if ((nil == self.selectedItem && 0 == indexPath.row) ||
+            (self.selectedItem == self.items[indexPath.row])) {
             [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            //self tableView:tableView didSelectRowAtIndexPath:indexPath];
         }
     }
     return cell;
@@ -104,23 +106,29 @@
    return res;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.view endEditing:YES];
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) return nil;
     
-    if (0 == indexPath.section) {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        return;
+    NSIndexPath * selected = [self.tableView indexPathForSelectedRow];
+    if (indexPath.row != selected.row) {
+        UITableViewCell * preCell = [tableView cellForRowAtIndexPath:selected];
+        preCell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    return indexPath;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.view endEditing:YES];
+    
+    UITableViewCell * curCell = [tableView cellForRowAtIndexPath:indexPath];
+    curCell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
+
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.accessoryType = UITableViewCellAccessoryNone;
+//}
 
 /*
 // Override to support conditional editing of the table view.
@@ -184,11 +192,20 @@
     
     //PK 表格重载时确保新加地点被选中
     self.selectedItem = newItem;
+    //PK 这个调用确保之前的选中被取消，因为在DataSource的cellForRow方法中选中行不会触发dataDelegate中的方法。
+    NSIndexPath * index = [NSIndexPath indexPathForRow:100 inSection:1];
+    [self tableView:self.tableView willSelectRowAtIndexPath:index];
     
     [self.tableView reloadData];
 }
 
 - (IBAction)done:(id)sender {
+    if (0 == [self.items count]) {
+        NSString * msg = [NSString stringWithFormat:@"请先创建一个有效的%@。", self.caption];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     NSInteger row = [self.tableView indexPathForSelectedRow].row;
     //[self.delegate setLocationValue:self.items[row]];
     SEL callBack = NSSelectorFromString(self.callBackName);

@@ -263,7 +263,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="YS5-S5-Zyi" kind="push" id="SYq-6N-jS8"/>
+                                            <segue destination="YS5-S5-Zyi" kind="push" identifier="segueLog" id="SYq-6N-jS8"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -276,7 +276,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="添加活动" id="ceK-Qt-WJI">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="547-M2-ZEu"/>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="Xzs-nB-ZsK"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="Xzs-nB-ZsK">
+                            <connections>
+                                <action selector="doneAddActivity:" destination="MwC-a4-r5A" id="Kxv-DI-uud"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="labelDate" destination="sAe-sz-5o6" id="APA-Ol-0DZ"/>
@@ -291,10 +295,10 @@
             </objects>
             <point key="canvasLocation" x="2380" y="-478"/>
         </scene>
-        <!--View Controller - 日志-->
+        <!--Log View Controller - 日志-->
         <scene sceneID="UOY-lB-7Hu">
             <objects>
-                <viewController id="YS5-S5-Zyi" sceneMemberID="viewController">
+                <viewController id="YS5-S5-Zyi" customClass="RTLogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eYV-ps-iht"/>
                         <viewControllerLayoutGuide type="bottom" id="fzs-5r-h3y"/>
@@ -303,19 +307,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rae-V0-rvq">
-                                <rect key="frame" x="0.0" y="66" width="320" height="301"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="apX-Ij-ELT">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="日志" id="FLS-r5-wuA">
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="bNN-sE-0DX"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="bNN-sE-0DX">
+                            <connections>
+                                <action selector="done:" destination="YS5-S5-Zyi" id="66v-Hy-Uwg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textLog" destination="apX-Ij-ELT" id="Lxa-qR-698"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bd-NM-cFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

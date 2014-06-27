@@ -52,7 +52,9 @@
     NSInteger km = self.textKM.text.integerValue;
     NSInteger me = self.textMeter.text.integerValue;
     if (me > 999) {
-        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"米数应该小于1000，请修改后重新确认。" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
     }
     [self.delegate setValue:[NSNumber numberWithInt:(km*1000+me)] forKey:@"distance"];
     [self.navigationController popViewControllerAnimated:YES];

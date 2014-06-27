@@ -46,6 +46,9 @@
     float distance = [self.textDistance.text floatValue];
     if (0.0 == distance) {
         //PK to-do warming info
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入有效的距离数据。" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
         
         return;
     }

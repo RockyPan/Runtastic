@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSManagedObject * location;
 @property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
+@property (nonatomic, strong) NSString * log;
 
 @end
 
@@ -107,6 +108,9 @@
     }
     if ([segue.identifier isEqualToString:@"segueLoops"]) {
         [vc setValue:self.loops forKey:@"loops"];
+    }
+    if ([segue.identifier isEqualToString:@"segueLog"]) {
+        [vc setValue:self.log forKey:@"log"];
     }
 }
 

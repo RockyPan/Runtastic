@@ -18,6 +18,7 @@
 		5C222675195BBBC30029B859 /* RTLoopDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222674195BBBC30029B859 /* RTLoopDistanceViewController.m */; };
 		5C222678195BC3D40029B859 /* RTLoopTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222677195BC3D40029B859 /* RTLoopTypeViewController.m */; };
 		5C22267B195C17780029B859 /* RTFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22267A195C17780029B859 /* RTFormater.m */; };
+		5C22267E195D6C500029B859 /* RTLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22267D195D6C500029B859 /* RTLogViewController.m */; };
 		A8189B9B1947C701004B311B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9A1947C701004B311B /* Foundation.framework */; };
 		A8189B9D1947C701004B311B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9C1947C701004B311B /* CoreGraphics.framework */; };
 		A8189B9F1947C701004B311B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8189B9E1947C701004B311B /* UIKit.framework */; };
@@ -72,6 +73,8 @@
 		5C222677195BC3D40029B859 /* RTLoopTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLoopTypeViewController.m; sourceTree = "<group>"; };
 		5C222679195C17780029B859 /* RTFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTFormater.h; sourceTree = "<group>"; };
 		5C22267A195C17780029B859 /* RTFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTFormater.m; sourceTree = "<group>"; };
+		5C22267C195D6C500029B859 /* RTLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLogViewController.h; sourceTree = "<group>"; };
+		5C22267D195D6C500029B859 /* RTLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLogViewController.m; sourceTree = "<group>"; };
 		A8189B971947C701004B311B /* Runtastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runtastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8189B9A1947C701004B311B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A8189B9C1947C701004B311B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +172,8 @@
 				5C22267A195C17780029B859 /* RTFormater.m */,
 				5C222670195ACD850029B859 /* RTLoopDurationViewController.h */,
 				5C222671195ACD850029B859 /* RTLoopDurationViewController.m */,
+				5C22267C195D6C500029B859 /* RTLogViewController.h */,
+				5C22267D195D6C500029B859 /* RTLogViewController.m */,
 				5C222673195BBBC30029B859 /* RTLoopDistanceViewController.h */,
 				5C222674195BBBC30029B859 /* RTLoopDistanceViewController.m */,
 				5C222676195BC3D40029B859 /* RTLoopTypeViewController.h */,
@@ -339,6 +344,7 @@
 				A8189BE21952542B004B311B /* RTDurationViewController.m in Sources */,
 				5C22266C195966460029B859 /* RTLoopViewController.m in Sources */,
 				5C22262319519D610029B859 /* RTDatePickerViewController.m in Sources */,
+				5C22267E195D6C500029B859 /* RTLogViewController.m in Sources */,
 				5C222619194E87AB0029B859 /* RTActivitiesViewController.m in Sources */,
 				5C2226261952E04C0029B859 /* RTLocationViewController.m in Sources */,
 			);

@@ -55,7 +55,9 @@
     NSInteger m = self.textMinutes.text.integerValue;
     NSInteger s = self.textSeconds.text.integerValue;
     if (s > 59) {
-        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"秒数应该小于60，请修改后重新确认。" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
     }
     [self.delegate setValue:[NSNumber numberWithInt:(m*60+s)] forKey:@"duration"];
     [self.navigationController popViewControllerAnimated:YES];
