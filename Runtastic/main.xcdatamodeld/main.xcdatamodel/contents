@@ -4,6 +4,7 @@
         <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="heartRate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="mem" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="interval" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Loop" inverseName="activity" inverseEntity="Loop" syncable="YES"/>
@@ -29,7 +30,7 @@
         <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="type" inverseEntity="Activity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Activity" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Location" positionX="0" positionY="0" width="128" height="73"/>
         <element name="Loop" positionX="0" positionY="0" width="128" height="118"/>
         <element name="Type" positionX="0" positionY="0" width="128" height="75"/>

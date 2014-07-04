@@ -21,10 +21,14 @@
 @property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
 @property (nonatomic, strong) NSMutableString * log;
+@property (nonatomic, assign) int * heartRate;
 
 @end
 
+
 @implementation RTAddActivityViewController
+
+int hr;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -50,6 +54,7 @@
     self.duration = [self startDate];
     self.loops = [[NSMutableArray alloc] init];
     self.log = [[NSMutableString alloc] init];
+    self.heartRate = &hr;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -64,6 +69,7 @@
     }
     self.labelLoopInfo.text = [self loopInfo:self.loops];
     self.labelLog.text = self.log;
+    self.labelHR.text = [NSString stringWithFormat:@"%d", hr];
 }
 
 - (NSString *)loopInfo:(NSArray *)loops {
@@ -113,6 +119,9 @@
     }
     if ([segue.identifier isEqualToString:@"segueLog"]) {
         [vc setValue:self.log forKey:@"log"];
+    }
+    if ([segue.identifier isEqualToString:@"segueHR"]) {
+        [vc setValue:self.heartRate forKey:@"heartRate"];
     }
 }
 
