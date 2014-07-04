@@ -287,6 +287,7 @@
                         <outlet property="labelDistance" destination="gkh-rz-Zfm" id="dT1-XN-Xa8"/>
                         <outlet property="labelDuration" destination="cpz-MD-gWE" id="7XM-ga-h8t"/>
                         <outlet property="labelLocation" destination="scR-MZ-N9m" id="9NJ-cH-w9g"/>
+                        <outlet property="labelLog" destination="GJm-DJ-He5" id="VwI-1l-D9r"/>
                         <outlet property="labelLoopInfo" destination="dTh-ZG-Cgw" id="bU1-E6-KJt"/>
                         <outlet property="labelType" destination="ikh-GD-25G" id="emO-88-dKg"/>
                     </connections>
@@ -307,8 +308,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="apX-Ij-ELT">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apX-Ij-ELT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -317,6 +318,12 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fzs-5r-h3y" firstAttribute="top" secondItem="apX-Ij-ELT" secondAttribute="bottom" id="HQT-0g-Eoy"/>
+                            <constraint firstAttribute="trailing" secondItem="apX-Ij-ELT" secondAttribute="trailing" id="a9a-vU-eKv"/>
+                            <constraint firstItem="apX-Ij-ELT" firstAttribute="leading" secondItem="Ay1-mM-ZEN" secondAttribute="leading" id="eak-98-25M"/>
+                            <constraint firstItem="apX-Ij-ELT" firstAttribute="top" secondItem="Ay1-mM-ZEN" secondAttribute="top" id="juy-Rg-HS6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="日志" id="FLS-r5-wuA">
                         <barButtonItem key="rightBarButtonItem" title="完成" id="bNN-sE-0DX">
@@ -327,6 +334,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="textLog" destination="apX-Ij-ELT" id="Lxa-qR-698"/>
+                        <outlet property="textViewBottomLayoutGuideConstraint" destination="HQT-0g-Eoy" id="aam-Qr-63g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bd-NM-cFc" userLabel="First Responder" sceneMemberID="firstResponder"/>

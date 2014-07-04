@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSManagedObject * location;
 @property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
-@property (nonatomic, strong) NSString * log;
+@property (nonatomic, strong) NSMutableString * log;
 
 @end
 
@@ -49,6 +49,7 @@
     self.distance = 0.0;
     self.duration = [self startDate];
     self.loops = [[NSMutableArray alloc] init];
+    self.log = [[NSMutableString alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,6 +63,7 @@
         self.labelLocation.text = [self.location valueForKey:@"location"];
     }
     self.labelLoopInfo.text = [self loopInfo:self.loops];
+    self.labelLog.text = self.log;
 }
 
 - (NSString *)loopInfo:(NSArray *)loops {

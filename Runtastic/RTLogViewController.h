@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RTLogViewController : UIViewController
+@interface RTLogViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, strong) NSString * log;
+@property (nonatomic, strong) NSMutableString * log;
 
 @property (weak, nonatomic) IBOutlet UITextView *textLog;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewBottomLayoutGuideConstraint;
 
 - (IBAction)done:(id)sender;
 
