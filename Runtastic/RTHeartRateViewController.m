@@ -32,16 +32,19 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setHidesBackButton:YES];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (0 != [self.heartRate integerValue]) {
-        self.textHeartRate.text = [NSString stringWithFormat:@"%@", self.heartRate];
+    if (0 != [self.heartRate.value integerValue]) {
+        self.textHeartRate.text = [NSString stringWithFormat:@"%ld", (long)[self.heartRate.value integerValue]];
     }
 }
 
 - (IBAction)done:(id)sender {
-    self.heartRate
+    self.heartRate.value = [NSNumber numberWithInteger:[self.textHeartRate.text integerValue]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

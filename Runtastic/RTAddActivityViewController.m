@@ -9,6 +9,8 @@
 #import "RTAddActivityViewController.h"
 #import "RTAppDelegate.h"
 #import "RTFormater.h"
+#import "RTMutableValue.h"
+#import "DataFieldName.h"
 
 @interface RTAddActivityViewController ()
 
@@ -21,14 +23,12 @@
 @property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
 @property (nonatomic, strong) NSMutableString * log;
-@property (nonatomic, assign) int * heartRate;
+@property (nonatomic, strong) RTMutableValue * heartRate;
 
 @end
 
 
 @implementation RTAddActivityViewController
-
-int hr;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -54,7 +54,7 @@ int hr;
     self.duration = [self startDate];
     self.loops = [[NSMutableArray alloc] init];
     self.log = [[NSMutableString alloc] init];
-    self.heartRate = &hr;
+    self.heartRate = [[RTMutableValue alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,7 +69,7 @@ int hr;
     }
     self.labelLoopInfo.text = [self loopInfo:self.loops];
     self.labelLog.text = self.log;
-    self.labelHR.text = [NSString stringWithFormat:@"%d", hr];
+    self.labelHR.text = [NSString stringWithFormat:@"%ld", [self.heartRate.value integerValue]];
 }
 
 - (NSString *)loopInfo:(NSArray *)loops {
@@ -102,8 +102,10 @@ int hr;
     }
     if ([segue.identifier isEqualToString:@"segueLocation"]) {
         [vc setValue:self.location forKey:@"selectedItem"];
-        [vc setValue:@"Location" forKey:@"entityName"];
-        [vc setValue:@"location" forKey:@"attributeName"];
+//        [vc setValue:@"Location" forKey:@"entityName"];
+//        [vc setValue:@"location" forKey:@"attributeName"];
+        [vc setValue:TLocation forKey:@"entityName"];
+        [vc setValue:ALocation forKey:@"attributeName"];
         [vc setValue:@"地点" forKey:@"caption"];
         [vc setValue:@"setLocationValue:" forKey:@"callBackName"];
     }

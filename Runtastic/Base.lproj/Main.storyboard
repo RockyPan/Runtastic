@@ -1127,7 +1127,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="textDistance" destination="4HZ-F9-w1g" id="hmy-jh-1b5"/>
                         <outlet property="textHeartRate" destination="4HZ-F9-w1g" id="SNE-za-fWF"/>
                     </connections>
                 </tableViewController>
