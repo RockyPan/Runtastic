@@ -9,6 +9,9 @@
 #ifndef Runtastic_DataFieldName_h
 #define Runtastic_DataFieldName_h
 
+
+
+
 //PK activity
 NSString * TActivity    = @"Activity";
 NSString * ADateTime    = @"dateTime";

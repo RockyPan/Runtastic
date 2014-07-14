@@ -16,6 +16,12 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel * managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
 
+@property (readonly, strong, nonatomic) NSDictionary * TActivity;
+@property (readonly, strong, nonatomic) NSDictionary * TLocation;
+@property (readonly, strong, nonatomic) NSDictionary * TLoop;
+@property (readonly, strong, nonatomic) NSDictionary * TLoopType;
+@property (readonly, strong, nonatomic) NSDictionary * TActivityType;
+
 - (void) saveContext;
 - (NSURL *) applicationDocumentsDirectory;
 

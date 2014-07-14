@@ -15,6 +15,30 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize TActivity = _TActivity;
+@synthesize TActivityType = _TActivityType;
+@synthesize TLocation = _TLocation;
+@synthesize TLoop = _TLoop;
+@synthesize TLoopType = _TLoopType;
+
+- (NSDictionary *) TActivity {
+    if (nil == _TActivity) {
+        _TActivity =
+        @{@"name"       : @"Activity",
+          @"ADateTime"  : @"dateTime",
+          @"ADistance"  : @"distance",
+          @"ADuration"  : @"duration",
+          @"AHeartRate" : @"heartRate",
+          @"ALog"       : @"log",
+          @"AOrigin"    : @"origin",
+          @"ATemperature" : @"temperature",
+          @"RLocation"  : @"location",
+          @"RLoops"     : @"loops",
+          @"RActivityType" : @"activityType"
+          };
+    }
+    return _TActivity;
+}
 
 - (NSManagedObjectContext *) managedObjectContext
 {
@@ -76,6 +100,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    
     return YES;
 }
 							
