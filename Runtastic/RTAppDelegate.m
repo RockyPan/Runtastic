@@ -40,6 +40,52 @@
     return _TActivity;
 }
 
+- (NSDictionary *) TActivityType {
+    if (nil == _TActivityType) {
+        _TActivityType =
+        @{@"name"       : @"ActivityType",
+          @"AName"      : @"name",
+          @"RActivities": @"activities"
+          };
+    }
+    return _TActivityType;
+}
+
+- (NSDictionary *) TLocation {
+    if (nil == _TLocation) {
+        _TLocation =
+        @{@"name"       : @"Location",
+          @"ALocation"  : @"location",
+          @"RActivities": @"activities",
+          };
+    }
+    return _TLocation;
+}
+
+- (NSDictionary *) TLoop {
+    if (nil == _TLoop) {
+        _TLoop =
+        @{@"name"       : @"Loop",
+          @"ANumber"    : @"no",
+          @"ADistance"  : @"distance",
+          @"ADuration"  : @"duration",
+          @"RType"      : @"type",
+          @"RActivity"  : @"activity"
+          };
+    }
+    return _TLoop;
+}
+
+- (NSDictionary *) TLoopType {
+    if (nil == _TLoopType) {
+        _TLoopType =
+        @{@"name"       : @"LoopType",
+          @"AName"      : @"name"
+          };
+    }
+    return _TLoopType;
+}
+
 - (NSManagedObjectContext *) managedObjectContext
 {
     if (nil == _managedObjectContext) {

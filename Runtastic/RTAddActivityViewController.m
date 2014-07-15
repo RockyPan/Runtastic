@@ -19,11 +19,13 @@
 @property (nonatomic, strong) NSDate * actDate;
 @property (nonatomic, assign) float distance;
 @property (nonatomic, strong) NSDate * duration;
-@property (nonatomic, retain) NSManagedObject * location;
-@property (nonatomic, retain) NSManagedObject * type;
+//@property (nonatomic, retain) NSManagedObject * location;
+//@property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
 @property (nonatomic, strong) NSMutableString * log;
 @property (nonatomic, strong) RTMutableValue * heartRate;
+@property (nonatomic, strong) RTMutableValue * location;
+@property (nonatomic, strong) RTMutableValue * type;
 
 @end
 
@@ -48,13 +50,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    self.appDelegate = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
     self.actDate = [[NSDate alloc] init];
     self.distance = 0.0;
     self.duration = [self startDate];
     self.loops = [[NSMutableArray alloc] init];
     self.log = [[NSMutableString alloc] init];
     self.heartRate = [[RTMutableValue alloc] init];
+    self.location = [[RTMutableValue alloc] init];
+    self.type = [[RTMutableValue alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -64,12 +68,15 @@
     self.labelDate.text = [self formatDate:self.actDate];
     self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance];
     self.labelDuration.text = [self formatDuration:self.duration];
-    if (nil != self.location) {
-        self.labelLocation.text = [self.location valueForKey:@"location"];
-    }
     self.labelLoopInfo.text = [self loopInfo:self.loops];
     self.labelLog.text = self.log;
-    self.labelHR.text = [NSString stringWithFormat:@"%ld", [self.heartRate.value integerValue]];
+    self.labelHR.text = [NSString stringWithFormat:@"%ld", (long)[self.heartRate.valueNumber integerValue]];
+    if (nil != self.location.valueMrgObj) {
+        self.labelLocation.text = [self.location.valueMrgObj valueForKey:self.appDelegate.TLocation[@"ALocation"]];
+    }
+    if (nil != self.type.valueMrgObj) {
+        self.labelType.text = [self.type.valueMrgObj valueForKey:self.appDelegate.TActivityType[@"AName"]];
+    }
 }
 
 - (NSString *)loopInfo:(NSArray *)loops {
@@ -101,20 +108,20 @@
         [vc setValue:self.duration forKey:@"duration"];
     }
     if ([segue.identifier isEqualToString:@"segueLocation"]) {
+        NSDictionary * td = self.appDelegate.TLocation;
         [vc setValue:self.location forKey:@"selectedItem"];
-//        [vc setValue:@"Location" forKey:@"entityName"];
-//        [vc setValue:@"location" forKey:@"attributeName"];
-        [vc setValue:TLocation forKey:@"entityName"];
-        [vc setValue:ALocation forKey:@"attributeName"];
+        [vc setValue:td[@"name"] forKey:@"entityName"];
+        [vc setValue:td[@"ALocation"] forKey:@"attributeName"];
         [vc setValue:@"地点" forKey:@"caption"];
-        [vc setValue:@"setLocationValue:" forKey:@"callBackName"];
+        [vc setValue:self.location forKey:@"value"];
     }
     if ([segue.identifier isEqualToString:@"segueType"]) {
+        NSDictionary * td = self.appDelegate.TActivityType;
         [vc setValue:self.type forKey:@"selectedItem"];
-        [vc setValue:@"Type" forKey:@"entityName"];
-        [vc setValue:@"typeName" forKey:@"attributeName"];
+        [vc setValue:td[@"name"] forKey:@"entityName"];
+        [vc setValue:td[@"AName"] forKey:@"attributeName"];
         [vc setValue:@"类型" forKey:@"caption"];
-        [vc setValue:@"setTypeValue:" forKey:@"callBackName"];
+        [vc setValue:self.type forKey:@"value"];
     }
     if ([segue.identifier isEqualToString:@"segueLoops"]) {
         [vc setValue:self.loops forKey:@"loops"];
@@ -173,17 +180,15 @@
     self.duration = duration;
 }
 
-- (void)setLocationValue:(NSManagedObject *) location {
-//    NSError * err = [[NSError alloc] init];
-//    NSManagedObject * location = [self.appDelegate.managedObjectContext existingObjectWithID:objID error:&err];
-    self.location = location;
-    self.labelLocation.text = [location valueForKey:@"location"];
-}
-
-- (void)setTypeValue:(NSManagedObject *)type {
-    self.type = type;
-    self.labelType.text = [type valueForKey:@"typeName"];
-}
+//- (void)setLocationValue:(NSManagedObject *) location {
+//    self.location = location;
+//    self.labelLocation.text = [location valueForKey:@"location"];
+//}
+//
+//- (void)setTypeValue:(NSManagedObject *)type {
+//    self.type = type;
+//    self.labelType.text = [type valueForKey:@"typeName"];
+//}
 
 #pragma mark - Table view data source
 /*

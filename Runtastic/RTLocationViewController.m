@@ -207,9 +207,9 @@
         return;
     }
     NSInteger row = [self.tableView indexPathForSelectedRow].row;
-    //[self.delegate setLocationValue:self.items[row]];
-    SEL callBack = NSSelectorFromString(self.callBackName);
-    [self.delegate performSelector:callBack withObject:self.items[row]];
+    self.value.valueMrgObj = self.items[row];
+//    SEL callBack = NSSelectorFromString(self.callBackName);
+//    [self.delegate performSelector:callBack withObject:self.items[row]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

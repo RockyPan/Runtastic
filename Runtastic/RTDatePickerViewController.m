@@ -49,7 +49,7 @@
 */
 
 - (IBAction)done:(id)sender {
-    [self.delegate setDateValue:self.picker.date];
+    [self.delegate setValue:self.picker.date forKeyPath:@"actDate"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

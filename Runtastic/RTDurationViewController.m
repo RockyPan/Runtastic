@@ -34,6 +34,7 @@
 
 - (IBAction)done:(id)sender {
     [self.delegate setDurationValue:self.picker.date];
+    [self]
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end
