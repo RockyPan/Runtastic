@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTAddActivityDelegate.h"
 
 @interface RTDistanceViewController : UITableViewController
 
-@property (nonatomic, strong) NSNumber * distance;
-@property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
+@property (nonatomic, weak) id delegate;
 @property (weak, nonatomic) IBOutlet UITextField *textDistance;
 
 - (IBAction)done:(id)sender;

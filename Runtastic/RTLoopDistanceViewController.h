@@ -11,7 +11,7 @@
 @interface RTLoopDistanceViewController : UITableViewController
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, strong) NSNumber * distance;
+//@property (nonatomic, strong) NSNumber * distance;
 
 @property (weak, nonatomic) IBOutlet UITextField *textKM;
 @property (weak, nonatomic) IBOutlet UITextField *textMeter;

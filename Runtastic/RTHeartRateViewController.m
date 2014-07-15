@@ -37,13 +37,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (0 != [self.heartRate.valueNumber integerValue]) {
-        self.textHeartRate.text = [NSString stringWithFormat:@"%ld", (long)[self.heartRate.valueNumber integerValue]];
+    NSNumber * hr = [self.delegate valueForKey:@"heartRate"];
+    if (0 != [hr integerValue]) {
+        self.textHeartRate.text = [NSString stringWithFormat:@"%ld", (long)[hr integerValue]];
     }
 }
 
 - (IBAction)done:(id)sender {
-    self.heartRate.valueNumber = [NSNumber numberWithInteger:[self.textHeartRate.text integerValue]];
+    [self.delegate setValue:[NSNumber numberWithInteger:[self.textHeartRate.text integerValue]] forKey:@"heartRate"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

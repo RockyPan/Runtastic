@@ -314,7 +314,7 @@
                         <outlet property="labelDuration" destination="cpz-MD-gWE" id="7XM-ga-h8t"/>
                         <outlet property="labelHR" destination="GJm-DJ-He5" id="Rck-nk-6Nk"/>
                         <outlet property="labelLocation" destination="scR-MZ-N9m" id="9NJ-cH-w9g"/>
-                        <outlet property="labelLog" destination="GJm-DJ-He5" id="VwI-1l-D9r"/>
+                        <outlet property="labelLog" destination="PlC-jM-ZgW" id="vh2-gf-r8T"/>
                         <outlet property="labelLoopInfo" destination="dTh-ZG-Cgw" id="bU1-E6-KJt"/>
                         <outlet property="labelType" destination="ikh-GD-25G" id="emO-88-dKg"/>
                     </connections>

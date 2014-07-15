@@ -37,8 +37,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (0.0 != [self.distance floatValue]) {
-        self.textDistance.text = [[NSString alloc] initWithFormat:@"%.2f", [self.distance floatValue]];
+    NSNumber * distance = (NSNumber *)[self.delegate valueForKey:@"distance"];
+    if (0 != [distance integerValue]) {
+        self.textDistance.text = [[NSString alloc] initWithFormat:@"%.2f", [distance integerValue] / 1000.0f];
     }
 }
 
@@ -51,7 +52,7 @@
         return;
     }
     
-    [self.delegate setDistanceValue:distance];
+    [self.delegate setValue:[NSNumber numberWithInteger:distance * 1000] forKeyPath:@"distance"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

@@ -17,15 +17,13 @@
 @property (nonatomic, weak) RTAppDelegate * appDelegate;
 
 @property (nonatomic, strong) NSDate * actDate;
-@property (nonatomic, assign) float distance;
+@property (nonatomic, strong) NSNumber * distance;
 @property (nonatomic, strong) NSDate * duration;
-//@property (nonatomic, retain) NSManagedObject * location;
-//@property (nonatomic, retain) NSManagedObject * type;
+@property (nonatomic, retain) NSManagedObject * location;
+@property (nonatomic, retain) NSManagedObject * type;
 @property (nonatomic, retain) NSArray * loops;
-@property (nonatomic, strong) NSMutableString * log;
-@property (nonatomic, strong) RTMutableValue * heartRate;
-@property (nonatomic, strong) RTMutableValue * location;
-@property (nonatomic, strong) RTMutableValue * type;
+@property (nonatomic, strong) NSString * log;
+@property (nonatomic, strong) NSNumber * heartRate;
 
 @end
 
@@ -52,13 +50,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.appDelegate = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
     self.actDate = [[NSDate alloc] init];
-    self.distance = 0.0;
+    self.distance = [[NSNumber alloc] init];
     self.duration = [self startDate];
     self.loops = [[NSMutableArray alloc] init];
-    self.log = [[NSMutableString alloc] init];
-    self.heartRate = [[RTMutableValue alloc] init];
-    self.location = [[RTMutableValue alloc] init];
-    self.type = [[RTMutableValue alloc] init];
+    self.log = [[NSString alloc] init];
+    self.heartRate = [[NSNumber alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,16 +62,16 @@
     [super viewWillAppear:animated];
     
     self.labelDate.text = [self formatDate:self.actDate];
-    self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance];
+    self.labelDistance.text = [NSString stringWithFormat:@"%.2f公里", self.distance.integerValue / 1000.0f];
     self.labelDuration.text = [self formatDuration:self.duration];
     self.labelLoopInfo.text = [self loopInfo:self.loops];
     self.labelLog.text = self.log;
-    self.labelHR.text = [NSString stringWithFormat:@"%ld", (long)[self.heartRate.valueNumber integerValue]];
-    if (nil != self.location.valueMrgObj) {
-        self.labelLocation.text = [self.location.valueMrgObj valueForKey:self.appDelegate.TLocation[@"ALocation"]];
+    self.labelHR.text = [NSString stringWithFormat:@"%ld", (long)[self.heartRate integerValue]];
+    if (nil != self.location) {
+        self.labelLocation.text = [self.location valueForKey:self.appDelegate.TLocation[@"ALocation"]];
     }
-    if (nil != self.type.valueMrgObj) {
-        self.labelType.text = [self.type.valueMrgObj valueForKey:self.appDelegate.TActivityType[@"AName"]];
+    if (nil != self.type) {
+        self.labelType.text = [self.type valueForKey:self.appDelegate.TActivityType[@"AName"]];
     }
 }
 
@@ -97,40 +93,22 @@
     id vc = segue.destinationViewController;
     [vc setValue:self forKey:@"delegate"];
 
-    if ([segue.identifier isEqualToString:@"segueDate"]) {
-        [vc setValue:self.actDate forKey:@"actDate"];
-    }
-    if ([segue.identifier isEqualToString:@"segueDistance"]) {
-        [vc setValue:[NSNumber numberWithFloat:(self.distance)]
-              forKey:@"distance"];
-    }
-    if ([segue.identifier isEqualToString:@"segueDuration"]) {
-        [vc setValue:self.duration forKey:@"duration"];
-    }
     if ([segue.identifier isEqualToString:@"segueLocation"]) {
         NSDictionary * td = self.appDelegate.TLocation;
-        [vc setValue:self.location forKey:@"selectedItem"];
         [vc setValue:td[@"name"] forKey:@"entityName"];
         [vc setValue:td[@"ALocation"] forKey:@"attributeName"];
         [vc setValue:@"地点" forKey:@"caption"];
-        [vc setValue:self.location forKey:@"value"];
+        [vc setValue:@"location" forKey:@"setKey"];
     }
     if ([segue.identifier isEqualToString:@"segueType"]) {
         NSDictionary * td = self.appDelegate.TActivityType;
-        [vc setValue:self.type forKey:@"selectedItem"];
         [vc setValue:td[@"name"] forKey:@"entityName"];
         [vc setValue:td[@"AName"] forKey:@"attributeName"];
         [vc setValue:@"类型" forKey:@"caption"];
-        [vc setValue:self.type forKey:@"value"];
+        [vc setValue:@"type" forKey:@"setKey"];
     }
     if ([segue.identifier isEqualToString:@"segueLoops"]) {
         [vc setValue:self.loops forKey:@"loops"];
-    }
-    if ([segue.identifier isEqualToString:@"segueLog"]) {
-        [vc setValue:self.log forKey:@"log"];
-    }
-    if ([segue.identifier isEqualToString:@"segueHR"]) {
-        [vc setValue:self.heartRate forKey:@"heartRate"];
     }
 }
 
@@ -173,7 +151,7 @@
 }
 
 - (void)setDistanceValue:(float)distance {
-    self.distance = distance;
+//    self.distance = distance;
 }
 
 - (void)setDurationValue:(NSDate *)duration {

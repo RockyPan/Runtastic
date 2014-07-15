@@ -37,7 +37,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSInteger di = self.distance.integerValue;
+    
+    NSInteger di = ((NSNumber *)[self.delegate valueForKey:@"distance"]).integerValue;
     NSInteger km = di / 1000;
     NSInteger me = di % 1000;
     if (km > 0) {

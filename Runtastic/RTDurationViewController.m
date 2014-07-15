@@ -28,13 +28,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.picker.date = self.duration;
+    self.picker.date = [self.delegate valueForKey:@"duration"];
 }
 
 
 - (IBAction)done:(id)sender {
-    [self.delegate setDurationValue:self.picker.date];
-    [self]
+    [self.delegate setValue:self.picker.date forKeyPath:@"duration"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

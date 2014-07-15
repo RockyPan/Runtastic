@@ -11,7 +11,7 @@
 @interface RTLoopDurationViewController : UITableViewController
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, strong) NSNumber * duration;
+//@property (nonatomic, strong) NSNumber * duration;
 
 @property (weak, nonatomic) IBOutlet UITextField *textMinutes;
 @property (weak, nonatomic) IBOutlet UITextField *textSeconds;

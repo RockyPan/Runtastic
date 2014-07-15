@@ -11,7 +11,6 @@
 @interface RTDatePickerViewController : UIViewController
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, strong) NSDate * actDate;
 @property (weak, nonatomic) IBOutlet UIDatePicker *picker;
 
 - (IBAction)done:(id)sender;

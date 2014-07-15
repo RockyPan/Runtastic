@@ -28,7 +28,7 @@
     [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
-    self.textLog.text = self.log;
+    self.textLog.text = [self.delegate valueForKey:@"log"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,7 +87,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    [self.log setString:self.textLog.text];
+    [self.delegate setValue:self.textLog.text forKey:@"log"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

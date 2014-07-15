@@ -7,21 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTAddActivityDelegate.h"
-#import "RTMutableValue.h"
 
 @interface RTLocationViewController : UITableViewController
 
-@property (nonatomic, weak) id<RTAddActivityDelegate> delegate;
-@property (nonatomic, retain) NSManagedObject * selectedItem;
+@property (nonatomic, weak) id delegate;
 
 //PK 以下信息由上层navigation item 传入
 @property (nonatomic, copy) NSString * entityName;    //对应的实体名
 @property (nonatomic, copy) NSString * attributeName; //对应属性名
 @property (nonatomic, copy) NSString * caption;       //显示名字
-//@property (nonatomic, copy) NSString * callBackName;
-//@property (nonatomic, strong) NSManagedObject * value;
-@property (nonatomic, strong) RTMutableValue * value;
+@property (nonatomic, copy) NSString * setKey;        //回设值对象的key
 
 - (IBAction)addNew:(id)sender;
 - (IBAction)done:(id)sender;

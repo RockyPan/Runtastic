@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTMutableValue.h"
 
 @interface RTHeartRateViewController : UITableViewController
 
-@property (nonatomic, retain) RTMutableValue * heartRate;
 @property (weak, nonatomic) id delegate;
 @property (weak, nonatomic) IBOutlet UITextField *textHeartRate;
 

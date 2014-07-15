@@ -12,6 +12,6 @@
 @interface RTLoopTypeViewController : UITableViewController
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic, retain) NSManagedObject * type;   //PK 已选择的类型
+//@property (nonatomic, retain) NSManagedObject * type;   //PK 已选择的类型
 
 @end

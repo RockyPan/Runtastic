@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTAddActivityDelegate.h"
 
 @interface RTLoopViewController : UITableViewController
 
-@property (nonatomic, weak) id <RTAddActivityDelegate> delegate;
+@property (nonatomic, weak) id delegate;
 @property (nonatomic, retain) NSMutableArray * loops;
 
 @end

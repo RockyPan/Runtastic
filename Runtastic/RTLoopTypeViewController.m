@@ -69,7 +69,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellType" forIndexPath:indexPath];
     cell.textLabel.text = [self.types[indexPath.row] valueForKey:@"name"];
-    if (self.type == self.types[indexPath.row]) {
+    NSManagedObject * type = (NSManagedObject *)[self.delegate valueForKey:@"type"];
+    if (type == self.types[indexPath.row]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     return cell;
@@ -78,8 +79,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    self.type = self.types[indexPath.row];
-    [self.delegate setValue:self.type forKey:@"type"];
+    //self.type = self.types[indexPath.row];
+    [self.delegate setValue:self.types[indexPath.row] forKey:@"type"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -6,8 +6,10 @@
 //  Copyright (c) 2014年 PanKyle. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import "RTLoopViewController.h"
 #import "RTFormater.h"
+#import "RTAppDelegate.h"
 
 @interface RTLoopViewController ()
 
@@ -44,12 +46,16 @@
 }
 
 - (NSString *)loopInfo:(NSManagedObject *) loop {
+    id appDel = [UIApplication sharedApplication].delegate;
+    NSDictionary * tbLoop = [appDel valueForKey:@"TLoop"];
+    NSDictionary * tbLoopType = [appDel valueForKey:@"TLoopType"];
+    
     NSString * info = nil;
-    NSNumber * loopNo = [loop valueForKey:@"loopNo"];
-    NSNumber * distance = [loop valueForKey:@"distance"];
-    NSNumber * duration = [loop valueForKey:@"duration"];
-    NSManagedObject * typeObj = [loop valueForKey:@"type"];
-    NSString * type = [typeObj valueForKey:@"name"];
+    NSNumber * loopNo = [loop valueForKey:tbLoop[@"ANumber"]];
+    NSNumber * distance = [loop valueForKey:tbLoop[@"ADistance"]];
+    NSNumber * duration = [loop valueForKey:tbLoop[@"ADuration"]];
+    NSManagedObject * typeObj = [loop valueForKey:tbLoop[@"RType"]];
+    NSString * type = [typeObj valueForKey:tbLoopType[@"AName"]];
     info = [NSString stringWithFormat:@"分段%2d %@ 距离：%@ 用时：%@", [loopNo integerValue], type, [RTFormater stringWithDistance:distance], [RTFormater stringWithDuration:duration]];
     
     return info;

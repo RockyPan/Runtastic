@@ -86,11 +86,11 @@
     if (1 == indexPath.section) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cellItem"];
         cell.textLabel.text = [self.items[indexPath.row] valueForKey:self.attributeName];
-        if ((nil == self.selectedItem && 0 == indexPath.row) ||
-            (self.selectedItem == self.items[indexPath.row])) {
+        NSManagedObject * selectedItem = [self.delegate valueForKey:self.setKey];
+        if ((nil == selectedItem && 0 == indexPath.row) ||
+            (selectedItem == self.items[indexPath.row])) {
             [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            //self tableView:tableView didSelectRowAtIndexPath:indexPath];
         }
     }
     return cell;
@@ -125,60 +125,6 @@
     curCell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
-//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-//    cell.accessoryType = UITableViewCellAccessoryNone;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)addNew:(id)sender {
     UITextField * text = [self getTextNew];
     NSString * location = text.text;
@@ -191,7 +137,7 @@
     [self getItems];
     
     //PK 表格重载时确保新加地点被选中
-    self.selectedItem = newItem;
+    [self.delegate setValue:newItem forKey:self.setKey];
     //PK 这个调用确保之前的选中被取消，因为在DataSource的cellForRow方法中选中行不会触发dataDelegate中的方法。
     NSIndexPath * index = [NSIndexPath indexPathForRow:100 inSection:1];
     [self tableView:self.tableView willSelectRowAtIndexPath:index];
@@ -207,9 +153,8 @@
         return;
     }
     NSInteger row = [self.tableView indexPathForSelectedRow].row;
-    self.value.valueMrgObj = self.items[row];
-//    SEL callBack = NSSelectorFromString(self.callBackName);
-//    [self.delegate performSelector:callBack withObject:self.items[row]];
+    [self.delegate setValue:self.items[row] forKey:self.setKey];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

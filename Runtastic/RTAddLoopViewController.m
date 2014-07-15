@@ -50,15 +50,15 @@
     id destinationVC = [segue destinationViewController];
     [destinationVC setValue:self forKey:@"delegate"];
     
-    if ([segue.identifier isEqualToString:@"segueLoopDuration"]) {
-        [destinationVC setValue:self.duration forKey:@"duration"];
-    }
-    if ([segue.identifier isEqualToString:@"segueLoopDistance"]) {
-        [destinationVC setValue:self.distance forKey:@"distance"];
-    }
-    if ([segue.identifier isEqualToString:@"segueLoopType"]) {
-        [destinationVC setValue:self.type forKey:@"type"];
-    }
+//    if ([segue.identifier isEqualToString:@"segueLoopDuration"]) {
+//        [destinationVC setValue:self.duration forKey:@"duration"];
+//    }
+//    if ([segue.identifier isEqualToString:@"segueLoopDistance"]) {
+//        [destinationVC setValue:self.distance forKey:@"distance"];
+//    }
+//    if ([segue.identifier isEqualToString:@"segueLoopType"]) {
+//        [destinationVC setValue:self.type forKey:@"type"];
+//    }
     
 }
 
@@ -67,12 +67,13 @@
     //PK to-do 检查数据合法性
     
     RTAppDelegate * appD = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
+    NSDictionary * tb = appD.TLoop;
     NSManagedObjectContext * context = appD.managedObjectContext;
-    NSManagedObject * loop = [NSEntityDescription insertNewObjectForEntityForName:@"Loop" inManagedObjectContext:context];
-    [loop setValue:self.distance forKeyPath:@"distance"];
-    [loop setValue:self.duration forKeyPath:@"duration"];
-    [loop setValue:self.loopNo forKeyPath:@"loopNo"];
-    [loop setValue:self.type forKeyPath:@"type"];
+    NSManagedObject * loop = [NSEntityDescription insertNewObjectForEntityForName:tb[@"name"] inManagedObjectContext:context];
+    [loop setValue:self.distance forKey:tb[@"ADistance"]];
+    [loop setValue:self.duration forKey:tb[@"ADuration"]];
+    [loop setValue:self.loopNo forKey:tb[@"ANumber"]];
+    [loop setValue:self.type forKeyPath:tb[@"RType"]];
     [appD saveContext];
     
     NSMutableArray * loops = (NSMutableArray *)[self.delegate valueForKey:@"loops"];

@@ -36,7 +36,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSInteger du = self.duration.integerValue;
+    NSInteger du = ((NSNumber *)[self.delegate valueForKey:@"duration"]).integerValue;
     if (0 != du) {
         NSInteger m = du / 60;
         NSInteger s = du % 60;
