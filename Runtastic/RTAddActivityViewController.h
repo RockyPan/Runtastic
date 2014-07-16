@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RTAddActivityDelegate.h"
 
-@interface RTAddActivityViewController : UITableViewController <RTAddActivityDelegate>
+@interface RTAddActivityViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDistance;

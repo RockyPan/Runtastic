@@ -6,11 +6,10 @@
 //  Copyright (c) 2014年 PanKyle. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import "RTAddActivityViewController.h"
 #import "RTAppDelegate.h"
 #import "RTFormater.h"
-#import "RTMutableValue.h"
-#import "DataFieldName.h"
 
 @interface RTAddActivityViewController ()
 
@@ -114,7 +113,9 @@
 
 - (IBAction)doneAddActivity:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    //PK 判断数据合法性
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSString *)formatDate:(NSDate *)date {
@@ -142,20 +143,6 @@
 - (NSDate *)startDate {
     //PK 减去时差确保时间是0点
     return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:-[[NSTimeZone systemTimeZone] secondsFromGMT]];
-}
-
-#pragma mark - Add Activity Delegate
-
-- (void)setDateValue:(NSDate *)date {
-    self.actDate = date;
-}
-
-- (void)setDistanceValue:(float)distance {
-//    self.distance = distance;
-}
-
-- (void)setDurationValue:(NSDate *)duration {
-    self.duration = duration;
 }
 
 //- (void)setLocationValue:(NSManagedObject *) location {

@@ -38,7 +38,6 @@
 		A8189BDC19507FAA004B311B /* to-do-list in Resources */ = {isa = PBXBuildFile; fileRef = A8189BDB19507FAA004B311B /* to-do-list */; };
 		A8189BDF1951D2B5004B311B /* RTDistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BDE1951D2B5004B311B /* RTDistanceViewController.m */; };
 		A8189BE21952542B004B311B /* RTDurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BE11952542B004B311B /* RTDurationViewController.m */; };
-		A8189BE5196F9C58004B311B /* RTMutableValue.m in Sources */ = {isa = PBXBuildFile; fileRef = A8189BE4196F9C58004B311B /* RTMutableValue.m */; };
 		A8189BE71970DCB8004B311B /* dataStruct in Resources */ = {isa = PBXBuildFile; fileRef = A8189BE61970DCB8004B311B /* dataStruct */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +58,6 @@
 		5C222615194E857C0029B859 /* RTAddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAddActivityViewController.m; sourceTree = "<group>"; };
 		5C222617194E87AB0029B859 /* RTActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTActivitiesViewController.h; sourceTree = "<group>"; };
 		5C222618194E87AB0029B859 /* RTActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTActivitiesViewController.m; sourceTree = "<group>"; };
-		5C222620194FE9890029B859 /* RTAddActivityDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTAddActivityDelegate.h; sourceTree = "<group>"; };
 		5C22262119519D610029B859 /* RTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTDatePickerViewController.h; sourceTree = "<group>"; };
 		5C22262219519D610029B859 /* RTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTDatePickerViewController.m; sourceTree = "<group>"; };
 		5C2226241952E04C0029B859 /* RTLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLocationViewController.h; sourceTree = "<group>"; };
@@ -105,10 +103,7 @@
 		A8189BDE1951D2B5004B311B /* RTDistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTDistanceViewController.m; sourceTree = "<group>"; };
 		A8189BE01952542B004B311B /* RTDurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTDurationViewController.h; sourceTree = "<group>"; };
 		A8189BE11952542B004B311B /* RTDurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTDurationViewController.m; sourceTree = "<group>"; };
-		A8189BE3196F9C58004B311B /* RTMutableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTMutableValue.h; path = RuntasticTests/RTMutableValue.h; sourceTree = SOURCE_ROOT; };
-		A8189BE4196F9C58004B311B /* RTMutableValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTMutableValue.m; path = RuntasticTests/RTMutableValue.m; sourceTree = SOURCE_ROOT; };
 		A8189BE61970DCB8004B311B /* dataStruct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dataStruct; sourceTree = "<group>"; };
-		A8189BE919710BC7004B311B /* DataFieldName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFieldName.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +163,6 @@
 		A8189BA01947C701004B311B /* Runtastic */ = {
 			isa = PBXGroup;
 			children = (
-				A8189BE919710BC7004B311B /* DataFieldName.h */,
 				A8189BE819710B20004B311B /* VC */,
 				A8189BCF1947C7DB004B311B /* main.xcdatamodeld */,
 				5C222679195C17780029B859 /* RTFormater.h */,
@@ -176,12 +170,9 @@
 				A8189BA91947C701004B311B /* RTAppDelegate.h */,
 				A8189BAA1947C701004B311B /* RTAppDelegate.m */,
 				A8189BAC1947C701004B311B /* Main.storyboard */,
-				5C222620194FE9890029B859 /* RTAddActivityDelegate.h */,
 				5C22261119483D830029B859 /* RTBaseActivityTableCell.h */,
 				5C22261219483D830029B859 /* RTBaseActivityTableCell.m */,
 				A8189BB21947C701004B311B /* Images.xcassets */,
-				A8189BE3196F9C58004B311B /* RTMutableValue.h */,
-				A8189BE4196F9C58004B311B /* RTMutableValue.m */,
 				A8189BA11947C701004B311B /* Supporting Files */,
 			);
 			path = Runtastic;
@@ -357,7 +348,6 @@
 				5C22266F19597EF30029B859 /* RTAddLoopViewController.m in Sources */,
 				5C222675195BBBC30029B859 /* RTLoopDistanceViewController.m in Sources */,
 				5C22267B195C17780029B859 /* RTFormater.m in Sources */,
-				A8189BE5196F9C58004B311B /* RTMutableValue.m in Sources */,
 				5CD89E371966837A008A3CE7 /* RTHeartRateViewController.m in Sources */,
 				5C222672195ACD850029B859 /* RTLoopDurationViewController.m in Sources */,
 				A8189BD41949D0F8004B311B /* RTMainTableViewController.m in Sources */,
