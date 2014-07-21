@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSArray * loops;
 @property (nonatomic, strong) NSString * log;
 @property (nonatomic, strong) NSNumber * heartRate;
+@property (nonatomic, strong) NSNumber * temperature;
 
 @end
 
@@ -54,6 +55,7 @@
     self.loops = [[NSMutableArray alloc] init];
     self.log = [[NSString alloc] init];
     self.heartRate = [[NSNumber alloc] init];
+    self.temperature = [[NSNumber alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,6 +73,9 @@
     }
     if (nil != self.type) {
         self.labelType.text = [self.type valueForKey:self.appDelegate.TActivityType[@"AName"]];
+    }
+    if (nil != self.temperature && 0 != self.temperature) {
+        self.labelTemp.text = [NSString stringWithFormat:@"%ld摄氏度", [self.temperature integerValue]];
     }
 }
 
@@ -115,6 +120,25 @@
 {
     //PK 判断数据合法性
     
+    //PK
+    RTAppDelegate * appD = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
+    NSDictionary * tb = appD.TActivity;
+    NSManagedObjectContext * context = appD.managedObjectContext;
+    NSManagedObject * activity = [NSEntityDescription insertNewObjectForEntityForName:tb[@"name"] inManagedObjectContext:context];
+    [activity setValue:self.actDate forKey:tb[@"ADateTime"]];
+    [activity setValue:self.distance forKey:tb[@"ADistance"]];
+    NSDate * start = [self startDate];
+    NSInteger interval = (NSInteger)[self.duration timeIntervalSinceDate:start];
+    [activity setValue:[NSNumber numberWithInteger:interval] forKey:tb[@"ADuration"]];
+    [activity setValue:self.heartRate forKey:tb[@"AHeartRate"]];
+    [activity setValue:self.log forKey:tb[@"ALog"]];
+//    [activity setValue:self.origin forKey:tb[@"AOrigin"]];
+//    [activity setValue:self.temperature forKey:tb[@"ATemperature"]];
+    [activity setValue:self.location forKey:tb[@"RLocation"]];
+    [activity setValue:self.loops forKey:tb[@"RLoops"]];
+    [activity setValue:self.type forKeyPath:tb[@"RActivityType"]];
+    [appD saveContext];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -130,7 +154,7 @@
     NSString * res = nil;
     
     NSTimeInterval du = [duration timeIntervalSinceDate:[self startDate]];
-    NSInteger min = du / 60;
+    int min = du / 60;
     //if (0 == min) return res;
     if (min < 60) {
         res = [[NSString alloc] initWithFormat:@"%d分钟", min];

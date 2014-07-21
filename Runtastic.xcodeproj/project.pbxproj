@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C18FFB3197D0B070091DC51 /* RTTemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C18FFB2197D0B070091DC51 /* RTTemperatureViewController.m */; };
 		5C22261319483D830029B859 /* RTBaseActivityTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22261219483D830029B859 /* RTBaseActivityTableCell.m */; };
 		5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222615194E857C0029B859 /* RTAddActivityViewController.m */; };
 		5C222619194E87AB0029B859 /* RTActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C222618194E87AB0029B859 /* RTActivitiesViewController.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C18FFB1197D0B070091DC51 /* RTTemperatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTTemperatureViewController.h; sourceTree = "<group>"; };
+		5C18FFB2197D0B070091DC51 /* RTTemperatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTTemperatureViewController.m; sourceTree = "<group>"; };
 		5C22261119483D830029B859 /* RTBaseActivityTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTBaseActivityTableCell.h; sourceTree = "<group>"; };
 		5C22261219483D830029B859 /* RTBaseActivityTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTBaseActivityTableCell.m; sourceTree = "<group>"; };
 		5C222614194E857C0029B859 /* RTAddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAddActivityViewController.h; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				5C222615194E857C0029B859 /* RTAddActivityViewController.m */,
 				5C222617194E87AB0029B859 /* RTActivitiesViewController.h */,
 				5C222618194E87AB0029B859 /* RTActivitiesViewController.m */,
+				5C18FFB1197D0B070091DC51 /* RTTemperatureViewController.h */,
+				5C18FFB2197D0B070091DC51 /* RTTemperatureViewController.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				5C222678195BC3D40029B859 /* RTLoopTypeViewController.m in Sources */,
 				A8189BAB1947C701004B311B /* RTAppDelegate.m in Sources */,
 				5C222616194E857C0029B859 /* RTAddActivityViewController.m in Sources */,
+				5C18FFB3197D0B070091DC51 /* RTTemperatureViewController.m in Sources */,
 				A8189BD11947C7DB004B311B /* main.xcdatamodeld in Sources */,
 				A8189BA71947C701004B311B /* main.m in Sources */,
 				A8189BE21952542B004B311B /* RTDurationViewController.m in Sources */,

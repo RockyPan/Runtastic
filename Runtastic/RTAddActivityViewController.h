@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelLoopInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labelLog;
 @property (weak, nonatomic) IBOutlet UILabel *labelHR;
+@property (weak, nonatomic) IBOutlet UILabel *labelTemp;
 
 - (IBAction)doneAddActivity:(id)sender;
 
