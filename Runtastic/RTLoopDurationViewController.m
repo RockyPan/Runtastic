@@ -40,8 +40,8 @@
     if (0 != du) {
         NSInteger m = du / 60;
         NSInteger s = du % 60;
-        self.textMinutes.text = [NSString stringWithFormat:@"%d", m];
-        self.textSeconds.text = [NSString stringWithFormat:@"%d", s];
+        self.textMinutes.text = [NSString stringWithFormat:@"%ld", m];
+        self.textSeconds.text = [NSString stringWithFormat:@"%ld", s];
     }
 }
 
@@ -52,8 +52,8 @@
 }
 
 - (IBAction)done:(id)sender {
-    NSInteger m = self.textMinutes.text.integerValue;
-    NSInteger s = self.textSeconds.text.integerValue;
+    int m = self.textMinutes.text.intValue;
+    int s = self.textSeconds.text.intValue;
     if (s > 59) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"秒数应该小于60，请修改后重新确认。" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
         [alert show];

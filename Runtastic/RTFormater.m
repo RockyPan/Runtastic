@@ -16,12 +16,12 @@
     NSInteger di = distance.integerValue;
     if (di >= 1000) {
         if (0 == di % 1000) {
-            res = [NSString stringWithFormat:@"%d公里", di / 1000];
+            res = [NSString stringWithFormat:@"%ld公里", di / 1000];
         } else {
-            res = [NSString stringWithFormat:@"%d公里%d米", di / 1000, di % 1000];
+            res = [NSString stringWithFormat:@"%ld公里%ld米", di / 1000, di % 1000];
         }
     } else {
-        res = [NSString stringWithFormat:@"%d米", di];
+        res = [NSString stringWithFormat:@"%ld米", di];
     }
     return res;
 }
@@ -31,7 +31,7 @@
     NSInteger du = duration.integerValue;
     NSInteger m = du / 60;
     NSInteger s = du % 60;
-    res = [NSString stringWithFormat:@"%d分%d秒", m, s];
+    res = [NSString stringWithFormat:@"%ld分%ld秒", m, s];
     return res;
 }
 

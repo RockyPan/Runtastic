@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString * log;
 @property (nonatomic, strong) NSNumber * heartRate;
 @property (nonatomic, strong) NSNumber * temperature;
+@property (nonatomic, strong) NSNumber * origin;
 
 @end
 
@@ -56,6 +57,9 @@
     self.log = [[NSString alloc] init];
     self.heartRate = [[NSNumber alloc] init];
     self.temperature = [[NSNumber alloc] init];
+    self.origin = [NSNumber numberWithInt:1];
+    
+    [self prepareActivityType];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -79,6 +83,32 @@
     }
 }
 
+- (void) prepareActivityType {
+    //PK
+    NSDictionary * tb = self.appDelegate.TActivityType;
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:tb[@"name"] inManagedObjectContext:self.appDelegate.managedObjectContext];
+    [request setEntity:entity];
+    NSError * error = nil;
+    NSArray * items = [[self.appDelegate.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    NSMutableArray * types = [@[@"LSD", @"普通", @"赛事", @"间歇", @"tempo", @"越野"] mutableCopy];
+    for (NSManagedObject * value in items) {
+        NSString * tn = [value valueForKey:tb[@"AName"]];
+        [types removeObject:tn];
+    }
+    if (0 != [types count]) {
+        for (NSString * value in types) {
+            NSManagedObject * tObj = [NSEntityDescription insertNewObjectForEntityForName:tb[@"name"]  inManagedObjectContext:self.appDelegate.managedObjectContext];
+            [tObj setValue:value forKey:tb[@"AName"]];
+        }
+        [self.appDelegate saveContext];
+    }
+    for (NSManagedObject * value in items) {
+        NSString * tn = [value valueForKey:tb[@"AName"]];
+        if ([tn isEqualToString:@"普通"]) self.type = value;
+    }
+}
+
 - (NSString *)loopInfo:(NSArray *)loops {
     NSString * res = nil;
     NSInteger count = [loops count];
@@ -88,7 +118,7 @@
         distance += ((NSNumber *)[obj valueForKey:@"distance"]).integerValue;
         duration += ((NSNumber *)[obj valueForKey:@"duration"]).integerValue;
     }
-    res = [NSString stringWithFormat:@"共%d个分段，%@，%@", count, [RTFormater stringWithDistance:[NSNumber numberWithInteger:distance]], [RTFormater stringWithDuration:[NSNumber numberWithInteger:duration]]];
+    res = [NSString stringWithFormat:@"共%ld个分段，%@，%@", count, [RTFormater stringWithDistance:[NSNumber numberWithInteger:distance]], [RTFormater stringWithDuration:[NSNumber numberWithInteger:duration]]];
     return res;
 }
 
@@ -116,27 +146,116 @@
     }
 }
 
+- (NSInteger) getDurationSec {
+    NSDate * start = [self startDate];
+    NSInteger durationSec = (NSInteger)[self.duration timeIntervalSinceDate:start];
+    return durationSec;
+}
+
 - (IBAction)doneAddActivity:(id)sender
 {
-    //PK 判断数据合法性
+    RTAppDelegate * appD = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
     
-    //PK
+    //PK 判断数据合法性
+    BOOL valid = TRUE;
+    BOOL warn = FALSE;
+    NSString * promptValid = [[NSString alloc] init];
+    NSString * promptWarn = [[NSString alloc] init];
+    // 日期
+    // 类型
+    // 距离
+    if (0 == [self.distance integerValue]) {
+        valid = FALSE;
+        promptValid = [NSString stringWithFormat:@"%@距离不能为零。", promptValid];
+    }
+    // 持续时间
+
+    if (0 == [self getDurationSec]) {
+        valid = FALSE;
+        promptValid = [NSString stringWithFormat:@"%@持续时间不能为零。", promptValid];
+    }
+    // 平均心率
+    if (0 == [self.heartRate integerValue]) {
+        warn = TRUE;
+        promptWarn = [NSString stringWithFormat:@"平均心率，%@", promptWarn];
+    }
+    // 日志
+    if (0 == [self.log length]) {
+        warn = TRUE;
+        promptWarn = [NSString stringWithFormat:@"日志，%@", promptWarn];
+    }
+    // 温度
+    if (0 == [self.temperature integerValue]) {
+        warn = TRUE;
+        promptWarn = [NSString stringWithFormat:@"温度，%@", promptWarn];
+    }
+    // 地点
+    if (nil == self.location) {
+        warn = TRUE;
+        promptWarn = [NSString stringWithFormat:@"地点，%@", promptWarn];
+    }
+    // 分段
+    if (nil == self.loops || 0 == [self.loops count]) {
+        warn = TRUE;
+        promptWarn = [NSString stringWithFormat:@"分段，%@", promptWarn];
+    } else {
+        int duration = 0;
+        int distance = 0;
+        NSDictionary * tbLoop = appD.TLoop;
+        for (NSManagedObject * value in self.loops) {
+            NSString * temp = nil;
+            temp = [value valueForKey:tbLoop[@"ADuration"]];
+            duration += temp.intValue;
+            temp = [value valueForKey:tbLoop[@"ADistance"]];
+            distance += temp.intValue;
+        }
+        if (duration > [self getDurationSec]) {
+            valid = FALSE;
+            promptValid = [NSString stringWithFormat:@"%@所有分段的持续时间之和不能大于活动的总时长。", promptValid];
+        }
+        if (distance > self.distance.intValue) {
+            valid = FALSE;
+            promptValid = [NSString stringWithFormat:@"%@所有分段的距离之和不能大于活动的总距离。", promptValid];
+        }
+    }
+    
+    if (!valid) {
+        NSString * msg = [NSString stringWithFormat:@"数据有误。%@请重新修改数据。", promptValid];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"数据有误" message:msg delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if (warn) {
+        NSString * msg = [NSString stringWithFormat:@"下列数据：%@不完整。是否继续添加本次活动数据？或修改后再添加。", promptWarn];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"数据不完整" message:msg delegate:self cancelButtonTitle:@"继续添加" otherButtonTitles:@"修改数据", nil];
+        [alert show];
+        return;
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (0 == buttonIndex) {
+        [self saveActivity];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void) saveActivity {
     RTAppDelegate * appD = (RTAppDelegate *)[UIApplication sharedApplication].delegate;
     NSDictionary * tb = appD.TActivity;
     NSManagedObjectContext * context = appD.managedObjectContext;
     NSManagedObject * activity = [NSEntityDescription insertNewObjectForEntityForName:tb[@"name"] inManagedObjectContext:context];
     [activity setValue:self.actDate forKey:tb[@"ADateTime"]];
     [activity setValue:self.distance forKey:tb[@"ADistance"]];
-    NSDate * start = [self startDate];
-    NSInteger interval = (NSInteger)[self.duration timeIntervalSinceDate:start];
-    [activity setValue:[NSNumber numberWithInteger:interval] forKey:tb[@"ADuration"]];
+    [activity setValue:[NSNumber numberWithInteger:[self getDurationSec]] forKey:tb[@"ADuration"]];
     [activity setValue:self.heartRate forKey:tb[@"AHeartRate"]];
     [activity setValue:self.log forKey:tb[@"ALog"]];
-//    [activity setValue:self.origin forKey:tb[@"AOrigin"]];
-//    [activity setValue:self.temperature forKey:tb[@"ATemperature"]];
+    [activity setValue:self.origin forKey:tb[@"AOrigin"]];
+    [activity setValue:self.temperature forKey:tb[@"ATemperature"]];
     [activity setValue:self.location forKey:tb[@"RLocation"]];
-    [activity setValue:self.loops forKey:tb[@"RLoops"]];
-    [activity setValue:self.type forKeyPath:tb[@"RActivityType"]];
+    if (0 != [self.loops count]) [activity setValue:self.loops forKey:tb[@"RLoops"]];
+    [activity setValue:self.type forKey:tb[@"RActivityType"]];
     [appD saveContext];
     
     [self dismissViewControllerAnimated:YES completion:nil];

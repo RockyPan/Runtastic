@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Activity" syncable="YES">
         <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
@@ -7,7 +7,7 @@
         <attribute name="heartRate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="log" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="origin" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <relationship name="activityType" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityType" inverseName="activities" inverseEntity="ActivityType" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="activities" inverseEntity="Location" syncable="YES"/>
         <relationship name="loops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Loop" inverseName="activity" inverseEntity="Loop" syncable="YES"/>
@@ -32,9 +32,9 @@
     </entity>
     <elements>
         <element name="Activity" positionX="36" positionY="-63" width="128" height="193"/>
+        <element name="ActivityType" positionX="-279" positionY="141" width="128" height="73"/>
         <element name="Location" positionX="-216" positionY="-63" width="128" height="73"/>
         <element name="Loop" positionX="259" positionY="153" width="128" height="118"/>
         <element name="LoopType" positionX="394" positionY="-4" width="128" height="58"/>
-        <element name="ActivityType" positionX="-279" positionY="141" width="128" height="73"/>
     </elements>
 </model>

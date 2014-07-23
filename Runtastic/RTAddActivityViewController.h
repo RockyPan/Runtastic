@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RTAddActivityViewController : UITableViewController
+@interface RTAddActivityViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDistance;
